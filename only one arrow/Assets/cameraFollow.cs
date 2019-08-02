@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class cameraFollow : MonoBehaviour
 {
+
     public Transform player;
 
-    void Update()
+    void LateUpdate()
     {
-        transform.position = player.position + new Vector3(0, 0, -5);
+
+        transform.position = Vector3.Lerp(transform.position, player.position + new Vector3(0, 0, -5), 0.2f);
+
     }
 
 }
