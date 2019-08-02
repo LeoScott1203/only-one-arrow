@@ -18,6 +18,6 @@ public static class Perks
 public enum Perk
 {
     // Always add new perks before Count so that it stays up to date in a proper way - Urist
-    GenericTestPerk,
+    ArrowStartingSpeedPerDrawUnit,
     Count
 }
