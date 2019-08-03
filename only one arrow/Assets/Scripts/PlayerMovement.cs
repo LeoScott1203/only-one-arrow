@@ -4,8 +4,7 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 {
     static float startingDashCooldown = 2.0f; // See arrow for getters affected by perks and stuff
 
-    [SerializeField]
-    float speed = 0.1f;
+    float speed;
 
     Vector3 mousePosition;
     Vector2 lookDirection;
@@ -21,6 +20,13 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
     }
 
     // TODO: allow key bindings, fairly easy with Unity's default input tools
+    public void Start()
+    {
+
+        speed = StatsSingleton.PlayerSpeed;
+
+    }
+
     public void Update()
     {
 
