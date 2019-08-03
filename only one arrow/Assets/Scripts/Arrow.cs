@@ -24,7 +24,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     static float falloffMax = 2.0f;
 
     static public Action<IArrowHolder, Arrow> OnPickedUpBy = delegate { };
-    static public Action<ITarget, Arrow> OnHit = delegate { };
+    static public Action<Collider2D, ITarget, Arrow> OnHit = delegate { };
     static public Action<Arrow> OnArrowStoppedWithoutHitting = delegate { };
 
     new Collider2D collider; // Ugh new and legacy named variables.
@@ -87,23 +87,34 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     public void OnTriggerEnter2D(Collider2D other)
     {
         IArrowHolder arrowHolder = other.GetComponent<IArrowHolder>();
-        
-        if(arrowHolder != null)
+        EnemyMovementBehaviour EMB = other.gameObject.GetComponent<EnemyMovementBehaviour>();
+
+        if (arrowHolder != null)
         {
             OnPickedUpBy(arrowHolder, this);
             PickUpBy(arrowHolder);
         }
 
-        if(CurrentState == State.InFlight) // Resting arrows shouldn't hit people
+        if (CurrentState == State.InFlight) // Resting arrows shouldn't hit people
         {
             ITarget target = other.GetComponent<ITarget>();
 
-            if(target != null)
+            if (target != null)
             {
-                OnHit(target, this);
+                OnHit(other, target, this);
                 Hit(target, other.ClosestPoint(transform.position));
             }
+
+            if (other.gameObject.tag == "Enemy")
+            // kill enemy
+            {
+
+                EMB.dead = true;
+
+            }
+
         }
+
     }
 
     public void Shoot(Transform shootPoint, float drawUnits)

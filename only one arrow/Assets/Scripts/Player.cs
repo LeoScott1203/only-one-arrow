@@ -50,9 +50,14 @@ public class Player : MonoBehaviour
         EndCombo();
     }
 
-    void OnArrowHit(ITarget target, Arrow arrow)
+    void OnArrowHit(Collider2D other, ITarget target, Arrow arrow)
     {
-        IncrementCombo();
+        EnemyMovementBehaviour EMB = other.GetComponent<EnemyMovementBehaviour>();
+
+        if (EMB.dead == false)
+            IncrementCombo();
+        else
+            EndCombo();
     }
 
     void IncrementCombo()

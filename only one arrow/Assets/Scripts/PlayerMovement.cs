@@ -4,13 +4,7 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 {
     static float startingDashCooldown = 2.0f; // See arrow for getters affected by perks and stuff
 
-    float speed
-    {
-        get
-        {
-            return StatsSingleton.PlayerSpeed;
-        }
-    }
+    public float speed;
 
     Vector3 mousePosition;
     Vector2 lookDirection;
@@ -23,6 +17,11 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
         {
             return currentDashCooldown / startingDashCooldown;
         }
+    }
+
+    public void Start()
+    {
+        speed = StatsSingleton.PlayerSpeed;
     }
 
     // TODO: allow key bindings, fairly easy with Unity's default input tools
@@ -46,9 +45,14 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
             Dash();
         }
 
-        mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        lookDirection = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-        transform.up = lookDirection;
+        if (speed != 0)
+        {
+
+            mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            lookDirection = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
+            transform.up = lookDirection;
+
+        }
 
         if(currentDashCooldown > 0)
         {
