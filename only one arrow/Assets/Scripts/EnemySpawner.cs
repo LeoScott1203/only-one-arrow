@@ -18,6 +18,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     Enemy enemyPrefab;
 
+    bool spawnEnemy = true;
+
     public void Awake()
     {
         timeBetweenSpawns = startTimeBetweenSpawns;
@@ -31,6 +33,7 @@ public class EnemySpawner : MonoBehaviour
     public void OnEnable()
     {
         Arrow.OnHit += OnEnemyKilled; // Since atm we can just assume it's enemies and all enemies have 1 hp
+        EnemyMovementBehaviour.TriggerMenu += OnEnd;
     }
 
     public void OnDisable()
@@ -42,7 +45,7 @@ public class EnemySpawner : MonoBehaviour
     {
         timeSinceLastSpawn += Time.deltaTime;
         
-        if(timeSinceLastSpawn >= timeBetweenSpawns)
+        if(timeSinceLastSpawn >= timeBetweenSpawns && spawnEnemy == true)
         {
             timeSinceLastSpawn = 0.0f;
             Spawn();
@@ -59,5 +62,12 @@ public class EnemySpawner : MonoBehaviour
         Vector2 spawnPointUncentered = Random.insideUnitCircle.normalized * spawnDistanceFromPlayer;
         Vector3 spawnPointCenteredOnPlayer = new Vector3(spawnPointUncentered.x, spawnPointUncentered.y, 0) + Player.MainPlayer.transform.position;
         GameObject.Instantiate(enemyPrefab, spawnPointCenteredOnPlayer, Quaternion.identity);
+    }
+
+    void OnEnd(EnemyMovementBehaviour EMB)
+    {
+
+        spawnEnemy = false;
+
     }
 }

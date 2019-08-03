@@ -18,7 +18,6 @@ public class OnGameOver : MonoBehaviour
     void OnEnd(EnemyMovementBehaviour EMB)
     {
 
-        Debug.Log("h");
         cv.enabled = true;
 
     }

@@ -4,6 +4,8 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 {
     static float startingDashCooldown = 2.0f; // See arrow for getters affected by perks and stuff
 
+    public bool ableToMove = true;
+
     float speed
     {
         get
@@ -29,36 +31,41 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
     public void Update()
     {
 
-        if (Input.GetKey(KeyCode.A))
-            transform.position += Vector3.left * speed * Time.deltaTime;
-
-        if (Input.GetKey(KeyCode.D))
-            transform.position += Vector3.right * speed * Time.deltaTime;
-
-        if (Input.GetKey(KeyCode.W))
-            transform.position += Vector3.up * speed * Time.deltaTime;
-
-        if (Input.GetKey(KeyCode.S))
-            transform.position += Vector3.down * speed * Time.deltaTime;
-
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        if (ableToMove)
         {
-            Dash();
-        }
 
-        if (speed != 0)
-        {
+            if (Input.GetKey(KeyCode.A))
+                transform.position += Vector3.left * speed * Time.deltaTime;
+
+            if (Input.GetKey(KeyCode.D))
+                transform.position += Vector3.right * speed * Time.deltaTime;
+
+            if (Input.GetKey(KeyCode.W))
+                transform.position += Vector3.up * speed * Time.deltaTime;
+
+            if (Input.GetKey(KeyCode.S))
+                transform.position += Vector3.down * speed * Time.deltaTime;
+
+            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            {
+
+                Dash();
+
+            }
 
             mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             lookDirection = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
             transform.up = lookDirection;
 
+            if (currentDashCooldown > 0)
+            {
+
+                currentDashCooldown = Mathf.Max(0.0f, currentDashCooldown - Time.deltaTime);
+
+            }
+
         }
 
-        if (currentDashCooldown > 0)
-        {
-            currentDashCooldown = Mathf.Max(0.0f, currentDashCooldown - Time.deltaTime);
-        }
     }
 
     void Dash()
