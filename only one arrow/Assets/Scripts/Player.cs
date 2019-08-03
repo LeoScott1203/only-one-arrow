@@ -17,7 +17,7 @@ public class Player : MonoBehaviour
         get;
         private set;
     } = 0;
-    
+
     int comboSinceLastAbilityUsage = 0;
 
     public bool AbilityReady

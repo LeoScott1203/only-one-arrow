@@ -47,10 +47,10 @@ public class PlayerShooting : MonoBehaviour, IArrowHolder
         currentDrawUnits = startingDrawUnits;
         arrow = null;
     }
-    
+
     void PickUp(IArrowHolder arrowHolder, Arrow arrow) // This is a dumb implementation, but fast enough to code
     {
-        if(arrowHolder != this)
+        if (arrowHolder != this)
         {
             return;
         }
