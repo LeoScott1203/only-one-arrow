@@ -53404,6 +53404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _shootPoint: {fileID: 1591562072}
+  arrowTrans: {fileID: 1741479470}
   arrow: {fileID: 1741479468}
 --- !u!61 &2136951538
 BoxCollider2D:
