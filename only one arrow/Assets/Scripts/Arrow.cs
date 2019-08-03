@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
 public class Arrow : MonoBehaviour, IChargeLevelProvider
@@ -21,6 +22,9 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     static float falloffStart = 0.0f;
     static float falloffAcceleration = 1.0f;
     static float falloffMax = 2.0f;
+
+    static public Action<IArrowHolder, Arrow> OnPickedUpBy = delegate { };
+    static public Action<ITarget, Arrow> OnHit = delegate { };
 
     new Collider2D collider; // Ugh new and legacy named variables.
 
@@ -84,7 +88,19 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         
         if(arrowHolder != null)
         {
-            PickUp(arrowHolder);
+            OnPickedUpBy(arrowHolder, this);
+            PickUpBy(arrowHolder);
+        }
+
+        if(CurrentState == State.InFlight) // Resting arrows shouldn't hit people
+        {
+            ITarget target = other.GetComponent<ITarget>();
+
+            if(target != null)
+            {
+                OnHit(target, this);
+                Hit(target, other.ClosestPoint(transform.position));
+            }
         }
     }
 
@@ -99,7 +115,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         collider.enabled = true;
     }
 
-    public void PickUp(IArrowHolder arrowHolder) // Later connect with on collide
+    public void PickUpBy(IArrowHolder arrowHolder)
     {
         _currentState = State.Carried;
 
@@ -107,6 +123,14 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         transform.SetPositionAndRotation(arrowHolder.ShootPoint.position, arrowHolder.ShootPoint.rotation);
 
         collider.enabled = false; // Just in case.
+    }
+
+    public void Hit(ITarget target, Vector2 perimeterPoint)
+    {
+        _currentState = State.Resting;
+
+        transform.SetParent(target.TargetTransform);
+        transform.SetPositionAndRotation(perimeterPoint, transform.rotation);
     }
 
     public enum State

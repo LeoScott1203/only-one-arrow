@@ -15,15 +15,20 @@ public class PlayerShooting : MonoBehaviour, IArrowHolder
             return _shootPoint;
         }
     }
-    
+
     [SerializeField]
     Arrow arrow;
 
     float currentDrawUnits = startingDrawUnits;
 
+    public void OnEnable()
+    {
+        Arrow.OnPickedUpBy += PickUp;
+    }
+
     public void Update()
     {
-        if(arrow.CurrentState != Arrow.State.Carried) // We're not doing anything if the arrow isn't held; Also TODO: since we have a thief enemy, redo that system
+        if(arrow == null) // We're not doing anything if the arrow isn't held
         {
             return;
         }
@@ -40,7 +45,17 @@ public class PlayerShooting : MonoBehaviour, IArrowHolder
 
     void Shoot()
     {
-        arrow.Shoot(_shootPoint, currentDrawUnits); // testing with magic numbers
+        arrow.Shoot(_shootPoint, currentDrawUnits);
         currentDrawUnits = startingDrawUnits;
+    }
+    
+    void PickUp(IArrowHolder arrowHolder, Arrow arrow) // This is a dumb implementation, but fast enough to code
+    {
+        if(arrowHolder != this)
+        {
+            return;
+        }
+
+        this.arrow = arrow;
     }
 }
