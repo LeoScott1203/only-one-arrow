@@ -30,7 +30,7 @@ public class Arrow : MonoBehaviour
     float speed = 0.0f;
     float falloff = 0.0f;
 
-    bool isShot = false; // While is shot, move forward and stuff :)
+    State state = State.Carried;
 
     public void Awake()
     {
@@ -39,24 +39,36 @@ public class Arrow : MonoBehaviour
 
     public void Update()
     {
-        // We'll probably not do anything while it's not actually shot
-        if(!isShot)
+        switch(state)
         {
-            return;
-        }
+            case(State.Carried): // Dummies for now
+            {
+                break;
+            }
+            case(State.InFlight):
+            {
+                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                
+                falloff = Mathf.Min(falloffMax, falloff + falloffAcceleration * Time.deltaTime);
+                speed = Mathf.Max(0f, speed - falloff);
 
-        if(speed > 0)
-        {
-            transform.Translate(Vector3.forward * speed); // I _think_ that should work, been a bit since I last touched transforms like that; need testing
-            
-            falloff = Mathf.Min(falloffMax, falloff + falloffAcceleration * Time.deltaTime);
-            speed = Mathf.Max(0f, speed - falloff);
+                if(speed == 0f)
+                {
+                    state = State.Resting;
+                }
+
+                break;
+            }
+            case(State.Resting):
+            {
+                break;
+            }
         }
     }
 
     public void Shoot(float drawUnits)
     {
-        isShot = true;
+        state = State.InFlight;
 
         speed = drawUnits * startingSpeedPerDrawUnit;
         falloff = falloffStart;
@@ -67,10 +79,17 @@ public class Arrow : MonoBehaviour
 
     public void PickUp() // Later connect with on collide
     {
-        isShot = false;
+        state = State.Carried;
 
         transform.SetPositionAndRotation(new Vector3(10000, 10000, 10000), Quaternion.identity); // Just moving it awaaay so it doesn't really do anything. Won't matter anyway. Could disable sprite and everything but not necessary at this point.
 
         collider.enabled = false; // Just in case.
+    }
+
+    enum State
+    {
+        Carried,
+        InFlight,
+        Resting
     }
 }
