@@ -35,3 +35,4 @@ sysinfo.txt
 *.apk
 *.unitypackage
 only one arrow/.vscode/settings.json
+only one arrow/ProjectSettings/Physics2DSettings.asset
