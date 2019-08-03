@@ -12,7 +12,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     {
         get
         {
-            return Perks.IsUnlocked(Perk.ArrowStartingSpeedPerDrawUnit) ? 0.8f : 0.5f;
+            return Perks.IsUnlocked(Perk.ArrowStartingSpeedPerDrawUnit) ? 2.0f : 1.5f;
         }
     }
 
@@ -23,9 +23,6 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     static float falloffMax = 2.0f;
 
     new Collider2D collider; // Ugh new and legacy named variables.
-
-    [SerializeField]
-    Transform shootPoint; // Arrows will be shot from here; should be a specialised GameObject on the player
 
     float speed = 0.0f;
     float falloff = 0.0f;
@@ -55,7 +52,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
             }
             case(State.InFlight):
             {
-                transform.Translate(Vector3.forward * speed * Time.deltaTime);
+                transform.Translate(Vector3.right * speed * Time.deltaTime);
                 
                 falloff = Mathf.Min(falloffMax, falloff + falloffAcceleration * Time.deltaTime);
                 speed = Mathf.Max(0f, speed - falloff);
@@ -74,7 +71,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         }
     }
 
-    public void Shoot(float drawUnits)
+    public void Shoot(Transform shootPoint, float drawUnits)
     {
         state = State.InFlight;
 
