@@ -9,6 +9,9 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     // startingSpeedPerDrawUnit is currently set up as example of above
 
     // Gets multiplied by initial draw units (based on how long the shooting button has been held for )
+
+    bool completed = false;
+
     static float startingSpeedPerDrawUnit
     {
         get
@@ -155,15 +158,18 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
     public void Shoot(Transform shootPoint, float drawUnits)
     {
-        _currentState = State.InFlight;
+        if (!completed)
+        {
+            _currentState = State.InFlight;
 
-        hasHit = false;
+            hasHit = false;
 
-        speed = drawUnits * startingSpeedPerDrawUnit;
-        falloff = falloffStart;
-        transform.SetParent(null);
+            speed = drawUnits * startingSpeedPerDrawUnit;
+            falloff = falloffStart;
+            transform.SetParent(null);
 
-        collider.enabled = true;
+            collider.enabled = true;
+        }
     }
 
     public void PickUpBy(IArrowHolder arrowHolder)
@@ -190,5 +196,19 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         Carried,
         InFlight,
         Resting
+    }
+
+    public void OnEnable()
+    {
+
+        EnemyMovementBehaviour.TriggerMenu += OnEnd;
+
+    }
+
+    void OnEnd(EnemyMovementBehaviour EMB)
+    {
+
+        completed = true;
+
     }
 }
