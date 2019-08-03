@@ -11,6 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
   m_Name: PlayerSpeedWhenWithoutArrow
+  m_Name: PerkData
   m_EditorClassIdentifier: 
   _perk: 0
   _category: 0
