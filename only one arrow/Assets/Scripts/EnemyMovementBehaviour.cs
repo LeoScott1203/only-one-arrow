@@ -27,9 +27,8 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
 
     void gameOver(Collider2D col)
     {
-
-        PlayerMovement PM = col.gameObject.GetComponent<PlayerMovement>();
-        PM.speed = 0f;
+        // PlayerMovement PM = col.gameObject.GetComponent<PlayerMovement>();
+        // PM.speed = 0f; // TODO: figure out how to get around this
         TriggerMenu(this);
 
     }
