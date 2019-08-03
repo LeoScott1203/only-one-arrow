@@ -80,7 +80,6 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Collid");
         IArrowHolder arrowHolder = other.GetComponent<IArrowHolder>();
         
         if(arrowHolder != null)
