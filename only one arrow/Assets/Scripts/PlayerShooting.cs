@@ -20,7 +20,7 @@ public class PlayerShooting : MonoBehaviour, IArrowHolder
     [SerializeField]
     Arrow arrow;
 
-    float currentDrawUnits = startingDrawUnits;
+    public float currentDrawUnits = startingDrawUnits;
 
     public void OnEnable()
     {
