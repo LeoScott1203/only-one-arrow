@@ -1,7 +1,7 @@
 using UnityEngine;
 using TMPro;
 
-[RequireComponent(typeof(TextMeshProUGUI))]
+[RequireComponent(typeof(TextDisplayInImages))]
 public class ComboDisplay : MonoBehaviour
 {
     [SerializeField]
@@ -9,11 +9,11 @@ public class ComboDisplay : MonoBehaviour
     [SerializeField]
     Color abilityReadyColor;
 
-    TextMeshProUGUI text;
+    TextDisplayInImages text;
 
     public void Awake()
     {
-        text = GetComponent<TextMeshProUGUI>();
+        text = GetComponent<TextDisplayInImages>();
     }
 
     public void OnEnable()
@@ -28,7 +28,7 @@ public class ComboDisplay : MonoBehaviour
 
     void OnComboChange(Player player)
     {
-        text.text = $"Combo x{player.ComboCount}";
-        text.color = player.AbilityReady ? abilityReadyColor : defaultColor;
+        text.DisplayText($"x{player.ComboCount}");
+        text.SetColor(player.AbilityReady ? abilityReadyColor : defaultColor);
     }
 }
