@@ -8,6 +8,12 @@ public class OnGameOver : MonoBehaviour
     [SerializeField]
     Canvas cv;
 
+    void Start()
+    {
+        DontDestroyOnLoad(cv);
+        cv.enabled = false;
+    }
+
     void OnEnable()
     {
 

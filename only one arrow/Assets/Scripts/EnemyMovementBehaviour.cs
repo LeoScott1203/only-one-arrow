@@ -3,6 +3,7 @@ using System;
 
 public abstract class EnemyMovementBehaviour : MonoBehaviour
 {
+
     private bool completed = false;
     public bool dead = false;
 
@@ -27,6 +28,7 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
 
     void gameOver(Collider2D col)
     {
+
         PlayerMovement PM = col.gameObject.GetComponent<PlayerMovement>();
         PM.ableToMove = false;
         TriggerMenu(this);
@@ -59,4 +61,19 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
         transform.Translate(Vector3.up * speed * Time.deltaTime);
 
     }
+
+    public void OnEnable()
+    {
+
+        EnemyMovementBehaviour.TriggerMenu += OnEnd;
+
+    }
+
+    void OnEnd(EnemyMovementBehaviour EMB)
+    {
+
+        completed = true;
+
+    }
+
 }
