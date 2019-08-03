@@ -13,17 +13,43 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     {
         get
         {
-            return Perks.IsUnlocked(Perk.ArrowStartingSpeedPerDrawUnit) ? 2.0f : 1.5f;
+            return Perks.IsUnlocked(Perk.ArrowStartingSpeedPerDrawUnit) ? StatsSingleton.ArrowStartingSpeedPerDrawUnitWithPerk : StatsSingleton.ArrowStartingSpeedPerDrawUnitWithoutPerk;
         }
     }
 
     // These values govern how fast the arrow stops after being shot. Visualisation should probably tie into that as well if we have time.
     // Arrow starts at falloffStart falloff, gets falloffAcceleration per second up to a max of falloffMax
-    static float falloffStart = 0.0f;
-    static float falloffAcceleration = 1.0f;
-    static float falloffMax = 2.0f;
+    static float falloffStart
+    {
+        get
+        {
+            return StatsSingleton.ArrowFalloffStart;
+        }
+    }
 
-    static float bouncebackAngleDispersion = 40.0f;
+    static float falloffAcceleration
+    {
+        get
+        {
+            return Perks.IsUnlocked(Perk.ArrowFalloffAcceleration) ? StatsSingleton.ArrowFalloffAccelerationWithPerk : StatsSingleton.ArrowFalloffAccelerationWithoutPerk;
+        }
+    }
+
+    static float falloffMax
+    {
+        get
+        {
+            return StatsSingleton.ArrowFalloffMax;
+        }
+    }
+
+    static float bouncebackAngleDispersion
+    {
+        get
+        {
+            return Perks.IsUnlocked(Perk.ArrowBouncebackDispersion) ? StatsSingleton.ArrowBouncebackAngleDispersionWithPerk : StatsSingleton.ArrowBouncebackAngleDispersionWithoutPerk;
+        }
+    }
 
     static public Action<IArrowHolder, Arrow> OnPickedUpBy = delegate { };
     static public Action<Collider2D, ITarget, Arrow> OnHit = delegate { };
