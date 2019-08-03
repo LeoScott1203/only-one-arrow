@@ -28,7 +28,7 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
     {
 
         PlayerMovement PM = col.gameObject.GetComponent<PlayerMovement>();
-        PM.speed = 0f;
+        // PM.speed = 0f; // TODO: fix
         cv.enabled = true;
 
     }
