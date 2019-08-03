@@ -25,6 +25,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
     static public Action<IArrowHolder, Arrow> OnPickedUpBy = delegate { };
     static public Action<ITarget, Arrow> OnHit = delegate { };
+    static public Action<Arrow> OnArrowStoppedWithoutHitting = delegate { };
 
     new Collider2D collider; // Ugh new and legacy named variables.
 
@@ -70,6 +71,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
                 if(speed == 0f)
                 {
+                    OnArrowStoppedWithoutHitting(this);
                     _currentState = State.Resting;
                 }
 
