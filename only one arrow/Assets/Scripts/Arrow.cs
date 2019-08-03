@@ -27,7 +27,14 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     float speed = 0.0f;
     float falloff = 0.0f;
 
-    State state = State.Carried;
+    State _currentState = State.Carried;
+    public State CurrentState
+    {
+        get
+        {
+            return _currentState;
+        }
+    }
 
     public float ChargeLevel
     {
@@ -44,7 +51,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
     public void Update()
     {
-        switch(state)
+        switch(_currentState)
         {
             case(State.Carried): // Dummies for now
             {
@@ -59,7 +66,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
                 if(speed == 0f)
                 {
-                    state = State.Resting;
+                    _currentState = State.Resting;
                 }
 
                 break;
@@ -71,27 +78,39 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         }
     }
 
+    public void OnTriggerEnter2D(Collider2D other)
+    {
+        Debug.Log("Collid");
+        IArrowHolder arrowHolder = other.GetComponent<IArrowHolder>();
+        
+        if(arrowHolder != null)
+        {
+            PickUp(arrowHolder);
+        }
+    }
+
     public void Shoot(Transform shootPoint, float drawUnits)
     {
-        state = State.InFlight;
+        _currentState = State.InFlight;
 
         speed = drawUnits * startingSpeedPerDrawUnit;
         falloff = falloffStart;
-        transform.SetPositionAndRotation(shootPoint.position, shootPoint.rotation);
+        transform.SetParent(null);
 
         collider.enabled = true;
     }
 
-    public void PickUp() // Later connect with on collide
+    public void PickUp(IArrowHolder arrowHolder) // Later connect with on collide
     {
-        state = State.Carried;
+        _currentState = State.Carried;
 
-        transform.SetPositionAndRotation(new Vector3(10000, 10000, 10000), Quaternion.identity); // Just moving it awaaay so it doesn't really do anything. Won't matter anyway. Could disable sprite and everything but not necessary at this point.
+        transform.SetParent(arrowHolder.ShootPoint);
+        transform.SetPositionAndRotation(arrowHolder.ShootPoint.position, arrowHolder.ShootPoint.rotation);
 
         collider.enabled = false; // Just in case.
     }
 
-    enum State
+    public enum State
     {
         Carried,
         InFlight,

@@ -1,16 +1,38 @@
 ﻿using UnityEngine;
 
-public class PlayerShooting : MonoBehaviour
+public class PlayerShooting : MonoBehaviour, IArrowHolder
 {
-    [SerializeField]
-    Transform shootPoint;
+    static float startingDrawUnits = 5.0f;
+    static float drawUnitsPerSecond = 10.0f;
+    static float maxDrawUnits = 15.0f;
 
+    [SerializeField]
+    Transform _shootPoint;
+    public Transform ShootPoint
+    {
+        get
+        {
+            return _shootPoint;
+        }
+    }
+    
     [SerializeField]
     Arrow arrow;
 
+    float currentDrawUnits = startingDrawUnits;
+
     public void Update()
     {
-        if(Input.GetMouseButtonDown(0)) // LMB; TODO: better behaviour but this is just for testing
+        if(arrow.CurrentState != Arrow.State.Carried) // We're not doing anything if the arrow isn't held; Also TODO: since we have a thief enemy, redo that system
+        {
+            return;
+        }
+
+        if(Input.GetMouseButton(0)) // LMB held down
+        {
+            currentDrawUnits = Mathf.Min(maxDrawUnits, currentDrawUnits + drawUnitsPerSecond * Time.deltaTime);
+        }
+        if(Input.GetMouseButtonUp(0)) // LMB; TODO: better behaviour but this is just for testing
         {
             Shoot();
         }
@@ -18,6 +40,7 @@ public class PlayerShooting : MonoBehaviour
 
     void Shoot()
     {
-        arrow.Shoot(shootPoint, 10.0f); // testing with magic numbers
+        arrow.Shoot(_shootPoint, currentDrawUnits); // testing with magic numbers
+        currentDrawUnits = startingDrawUnits;
     }
 }
