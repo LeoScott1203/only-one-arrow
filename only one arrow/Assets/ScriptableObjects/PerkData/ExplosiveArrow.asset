@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
   m_Name: ExplosiveArrow
   m_EditorClassIdentifier: 
-  _perk: 0
-  _category: 0
-  _description: 
-  _icon: {fileID: 0}
+  _perk: 13
+  _category: 3
+  _description: 'Special attack: arrow explodes'
+  _icon: {fileID: 21300000, guid: 8cb65adb1dce0d64084a5c165535c942, type: 3}

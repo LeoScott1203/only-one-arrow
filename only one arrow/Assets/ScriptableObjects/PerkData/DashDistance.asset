@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
   m_Name: DashDistance
   m_EditorClassIdentifier: 
-  _perk: 0
+  _perk: 2
   _category: 0
-  _description: 
-  _icon: {fileID: 0}
+  _description: Dash further
+  _icon: {fileID: 21300000, guid: 42cde495d2a80fd41a82a9351f8e28bb, type: 3}

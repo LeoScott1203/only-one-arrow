@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
   m_Name: MagnetDash
   m_EditorClassIdentifier: 
-  _perk: 0
-  _category: 0
-  _description: 
-  _icon: {fileID: 0}
+  _perk: 10
+  _category: 2
+  _description: Dashing draws arrow nearer
+  _icon: {fileID: 21300000, guid: 844497a2b9c82a2489d7ef973ebca4ee, type: 3}

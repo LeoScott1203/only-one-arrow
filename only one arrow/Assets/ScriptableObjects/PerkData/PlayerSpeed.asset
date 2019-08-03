@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
-  m_Name: PerkData
+  m_Name: PlayerSpeed
   m_EditorClassIdentifier: 
   _perk: 0
   _category: 0
-  _description: 
-  _icon: {fileID: 0}
+  _description: Player moves faster
+  _icon: {fileID: 21300000, guid: 85ff079113f0bf942b0b2b614050dbee, type: 3}

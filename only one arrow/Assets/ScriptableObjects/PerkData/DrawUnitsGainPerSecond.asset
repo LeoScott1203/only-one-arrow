@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
   m_Name: DrawUnitsGainPerSecond
   m_EditorClassIdentifier: 
-  _perk: 0
-  _category: 0
-  _description: 
-  _icon: {fileID: 0}
+  _perk: 4
+  _category: 1
+  _description: Arrow charges faster
+  _icon: {fileID: 21300000, guid: 291455c0f14b624488319b3be47bff7f, type: 3}

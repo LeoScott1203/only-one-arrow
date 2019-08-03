@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
-  m_Name: TelegibArrow
+  m_Name: TeleportArrow
   m_EditorClassIdentifier: 
-  _perk: 0
-  _category: 0
-  _description: 
-  _icon: {fileID: 0}
+  _perk: 15
+  _category: 3
+  _description: 'Special attack: Teleport to arrow after shooting'
+  _icon: {fileID: 21300000, guid: 89902390d6a83a049bd1cfd021ca6661, type: 3}

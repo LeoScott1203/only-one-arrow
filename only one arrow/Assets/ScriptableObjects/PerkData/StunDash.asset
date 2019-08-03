@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
   m_Name: StunDash
   m_EditorClassIdentifier: 
-  _perk: 0
-  _category: 0
-  _description: 
-  _icon: {fileID: 0}
+  _perk: 8
+  _category: 2
+  _description: Dashing through enemies stuns them
+  _icon: {fileID: 21300000, guid: 062e492cb0d7c0c4d8702774baf4187d, type: 3}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
   m_Name: TelegibDash
   m_EditorClassIdentifier: 
-  _perk: 0
-  _category: 0
-  _description: 
-  _icon: {fileID: 0}
+  _perk: 11
+  _category: 2
+  _description: Dashing exactly into enemy destroys it
+  _icon: {fileID: 21300000, guid: 3094a424ef724194fa82771cef2b3586, type: 3}

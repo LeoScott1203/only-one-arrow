@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
   m_Name: DashRechargeSpeed
   m_EditorClassIdentifier: 
-  _perk: 0
+  _perk: 3
   _category: 0
-  _description: 
-  _icon: {fileID: 0}
+  _description: Dash recharges faster
+  _icon: {fileID: 21300000, guid: 8f1e9bec1632d7a4a8acdc8e555c47ee, type: 3}

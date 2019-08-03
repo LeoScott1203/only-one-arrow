@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024de6c5793c87f45858677cd59bdddd, type: 3}
   m_Name: PiercingArrow
   m_EditorClassIdentifier: 
-  _perk: 0
-  _category: 0
-  _description: 
-  _icon: {fileID: 0}
+  _perk: 14
+  _category: 3
+  _description: 'Special attack: arrow pierces'
+  _icon: {fileID: 21300000, guid: 202856e5d18e63347ab3bfff32eb7b6b, type: 3}
