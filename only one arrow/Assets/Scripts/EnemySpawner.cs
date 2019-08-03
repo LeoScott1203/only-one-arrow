@@ -49,7 +49,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void OnEnemyKilled(ITarget target, Arrow arrow)
+    void OnEnemyKilled(Collider2D col, ITarget target, Arrow arrow)
     {
         timeBetweenSpawns = Mathf.Max(minTimeBetweenSpawns, timeBetweenSpawns - reduceTimeBetweenSpawnsKillFactor);
     }

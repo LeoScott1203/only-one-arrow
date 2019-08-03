@@ -373,9 +373,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232acb13a78d391428f1251428dc20a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeLevelProviderSource: {fileID: 2136951533}
-  colorAtMin: {r: 1, g: 0.06666667, b: 0.8156863, a: 1}
-  colorAtMax: {r: 1, g: 1, b: 1, a: 1}
+  chargeLevelProviderSource: {fileID: 385640592}
+  colorAtMin: {r: 1, g: 1, b: 1, a: 0}
+  colorAtMax: {r: 1, g: 0, b: 0, a: 0}
 --- !u!1 &389153925
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,9 +420,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 232acb13a78d391428f1251428dc20a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeLevelProviderSource: {fileID: 1741479467}
-  colorAtMin: {r: 0.8, g: 0.8, b: 0.8, a: 1}
-  colorAtMax: {r: 1, g: 0.06666667, b: 0.8156863, a: 1}
+  chargeLevelProviderSource: {fileID: 389153925}
+  colorAtMin: {r: 1, g: 1, b: 1, a: 0}
+  colorAtMax: {r: 0, g: 0, b: 0, a: 0}
 --- !u!212 &389153928
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -53440,8 +53440,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dead: 0
-  speed: 1
-  cv: {fileID: 573985428}
+  speed: 0.1
+  cv: {fileID: 0}
 --- !u!60 &1053392472
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -53494,7 +53494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddc66caf31dee054883e3365c7a92591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _targetTransform: {fileID: 1053392470}
+  _targetTransform: {fileID: 0}
 --- !u!1 &1132368361
 GameObject:
   m_ObjectHideFlags: 0
@@ -53709,7 +53709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591562071}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0.424, z: 0}
+  m_LocalPosition: {x: 0, y: 0.424, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1741479470}
@@ -54463,9 +54463,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4caaa4f4546b9645b6ccb01c1e4f371, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _shootPoint: {fileID: 1591562072}
-  arrowTrans: {fileID: 1741479470}
-  arrow: {fileID: 1741479468}
+  _shootPoint: {fileID: 0}
+  arrowTrans: {fileID: 0}
+  arrow: {fileID: 0}
 --- !u!61 &2136951538
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -54542,7 +54542,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f04740d3d09974da18797c3d43cff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
+  playerSpeed: 0
 --- !u!4 &2144555334
 Transform:
   m_ObjectHideFlags: 0
