@@ -192,30 +192,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6020621853496874029, guid: 43978e80e19a25641b9bea52e3b24117,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 11
-      objectReference: {fileID: 0}
     - target: {fileID: 6020621853979639037, guid: 43978e80e19a25641b9bea52e3b24117,
         type: 3}
       propertyPath: m_SortingOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 6020621852230053204, guid: 43978e80e19a25641b9bea52e3b24117,
+    - target: {fileID: 6020621853496874029, guid: 43978e80e19a25641b9bea52e3b24117,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 6020621852230053204, guid: 43978e80e19a25641b9bea52e3b24117,
-        type: 3}
-      propertyPath: m_SortingLayerID
-      value: 6134325
-      objectReference: {fileID: 0}
-    - target: {fileID: 6020621852230053204, guid: 43978e80e19a25641b9bea52e3b24117,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 1
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6020621853510137911, guid: 43978e80e19a25641b9bea52e3b24117,
         type: 3}
@@ -228,6 +213,21 @@ PrefabInstance:
       value: 6134325
       objectReference: {fileID: 0}
     - target: {fileID: 6020621853510137911, guid: 43978e80e19a25641b9bea52e3b24117,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020621852230053204, guid: 43978e80e19a25641b9bea52e3b24117,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020621852230053204, guid: 43978e80e19a25641b9bea52e3b24117,
+        type: 3}
+      propertyPath: m_SortingLayerID
+      value: 6134325
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020621852230053204, guid: 43978e80e19a25641b9bea52e3b24117,
         type: 3}
       propertyPath: m_SortingLayer
       value: 1
@@ -53369,7 +53369,7 @@ Grid:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1208784577}
   m_Enabled: 1
-  m_CellSize: {x: 1, y: 1, z: 0}
+  m_CellSize: {x: 0.4, y: 0.4, z: 0}
   m_CellGap: {x: 0, y: 0, z: 0}
   m_CellLayout: 0
   m_CellSwizzle: 0
@@ -53836,6 +53836,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 5
+  arrowStartingSpeedPerDrawUnitWithoutPerk: 1.5
+  arrowStartingSpeedPerDrawUnitWithPerk: 2
+  arrowFalloffStart: 0
+  arrowFalloffAccelerationWithoutPerk: 1
+  arrowFalloffAccelerationWithPerk: 0.6
+  arrowFalloffMax: 2
+  arrowBouncebackAngleDispersionWithoutPerk: 40
+  arrowBouncebackAngleDispersionWithPerk: 30
 --- !u!4 &2144555334
 Transform:
   m_ObjectHideFlags: 0
