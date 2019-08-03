@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Collider2D))]
-public class Arrow : MonoBehaviour
+public class Arrow : MonoBehaviour, IChargeLevelProvider
 {
     // RN all these consts are just random bits of nonsense, need some in-game stuff to actually see what those values should be - Urist
     // Some will just be set up once; some will be something like { get { return Perks.IsUnlocked(Perk.SomePerk) ? 5.0f : 4.0f; } }
@@ -31,6 +31,14 @@ public class Arrow : MonoBehaviour
     float falloff = 0.0f;
 
     State state = State.Carried;
+
+    public float ChargeLevel
+    {
+        get
+        {
+            return speed / 100f; // TODO: the right side should actually be max speed possible from max draw x speed per draw
+        }
+    }
 
     public void Awake()
     {
