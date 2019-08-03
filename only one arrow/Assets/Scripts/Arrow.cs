@@ -23,6 +23,8 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     static float falloffAcceleration = 1.0f;
     static float falloffMax = 2.0f;
 
+    static float bouncebackAngleDispersion = 40.0f;
+
     static public Action<IArrowHolder, Arrow> OnPickedUpBy = delegate { };
     static public Action<Collider2D, ITarget, Arrow> OnHit = delegate { };
     static public Action<Arrow> OnArrowStoppedWithoutHitting = delegate { };
@@ -41,6 +43,8 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         }
     }
 
+    bool hasHit = false;
+
     public float ChargeLevel
     {
         get
@@ -51,6 +55,8 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
     public void Awake()
     {
+        UnityEngine.Random.InitState((int)DateTime.Now.Ticks); // Doesn't really matter where we init it atm
+
         collider = GetComponent<Collider2D>();
     }
 
@@ -71,7 +77,11 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
                 if(speed == 0f)
                 {
-                    OnArrowStoppedWithoutHitting(this);
+                    if(!hasHit)
+                    {
+                        OnArrowStoppedWithoutHitting(this);
+                    }
+
                     _currentState = State.Resting;
                 }
 
@@ -121,6 +131,8 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     {
         _currentState = State.InFlight;
 
+        hasHit = false;
+
         speed = drawUnits * startingSpeedPerDrawUnit;
         falloff = falloffStart;
         transform.SetParent(null);
@@ -140,10 +152,11 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
     public void Hit(ITarget target, Vector2 perimeterPoint)
     {
-        _currentState = State.Resting;
+        hasHit = true;
 
-        transform.SetParent(target.TargetTransform);
-        transform.SetPositionAndRotation(perimeterPoint, transform.rotation);
+        float angle = UnityEngine.Random.Range(180 - bouncebackAngleDispersion, 180 + bouncebackAngleDispersion);
+
+        transform.Rotate(0, 0, angle);
     }
 
     public enum State
