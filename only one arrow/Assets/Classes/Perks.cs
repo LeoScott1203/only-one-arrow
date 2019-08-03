@@ -32,6 +32,7 @@ public enum Perk
     StunDash,
     DoubleDash,
     MagnetDash,
+    TelegibDash,
     // Special attack
     PhantomArrow,
     ExplosiveArrow,
