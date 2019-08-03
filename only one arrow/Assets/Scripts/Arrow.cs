@@ -12,6 +12,8 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
     bool completed = false;
 
+    public AudioSource killAudio;
+
     static float startingSpeedPerDrawUnit
     {
         get
@@ -132,6 +134,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         {
             OnPickedUpBy(arrowHolder, this);
             PickUpBy(arrowHolder);
+            GetComponent<AudioSource>().Play();
         }
 
         if (CurrentState == State.InFlight) // Resting arrows shouldn't hit people
@@ -148,6 +151,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
             // kill enemy
             {
 
+                killAudio.Play();
                 EMB.dead = true;
 
             }
