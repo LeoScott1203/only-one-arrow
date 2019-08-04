@@ -43,9 +43,9 @@ public enum Perk
     ArrowBouncebackDispersion, // Implemented
     // Special dash
     StunDash,
-    DoubleDash,
-    MagnetDash,
-    TelegibDash,
+    DoubleDash, // Implemented (needs test)
+    MagnetDash, // Implemented (needs test)
+    TelegibDash, // Implemented (needs test)
     // Special attack
     PhantomArrow,
     ExplosiveArrow,

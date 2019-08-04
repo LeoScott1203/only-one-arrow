@@ -21,6 +21,15 @@ public class Player : MonoBehaviour
     } = 0;
 
     int comboSinceLastAbilityUsage = 0;
+    float telegibTime = 0.0f;
+
+    public bool IsTelegibbing
+    {
+        get
+        {
+            return telegibTime > 0;
+        }
+    }
 
     public bool AbilityReady
     {
@@ -58,6 +67,14 @@ public class Player : MonoBehaviour
         Arrow.OnHit -= OnArrowHit;
         Arrow.OnSpecialShot -= OnAbilityUsed;
         Reset.OnReset -= OnReset;
+    }
+
+    public void Update()
+    {
+        if(telegibTime > 0)
+        {
+            telegibTime = Mathf.Max(0.0f, telegibTime - Time.deltaTime);
+        }
     }
 
     void OnArrowStoppedWithoutHitting(Arrow arrow)
@@ -102,5 +119,10 @@ public class Player : MonoBehaviour
         OnComboChange(this);
 
         transform.position = Vector3.zero;
+    }
+
+    public void ActivateTelegib()
+    {
+        telegibTime = 0.1f;
     }
 }

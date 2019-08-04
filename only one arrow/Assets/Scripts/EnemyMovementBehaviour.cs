@@ -46,9 +46,15 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
 
             if (col.gameObject.tag == "Player")
             {
-
-                completed = true;
-                gameOver(col);
+                if(col.GetComponent<Player>().IsTelegibbing)
+                {
+                    TriggerDeletion(this);
+                }
+                else
+                {
+                    completed = true;
+                    gameOver(col);
+                }
 
             }
 
