@@ -84,7 +84,7 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
 
     void OnReset()
     {
-        Destroy(this.gameObject);
+        TriggerDeletion(this);
     }
 
     public static void ImJustHookingThingsUpToThisBecauseItsFaster() // This is absolutely atrocious and I'll want to clean it up sliiightly later; need a working product first
