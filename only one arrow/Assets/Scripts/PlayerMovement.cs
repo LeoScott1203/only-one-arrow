@@ -5,6 +5,8 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 {
     Player parent;
 
+    public AudioSource dashNoise;
+
     static float startingDashCooldown //2.0f
     {
         get
@@ -100,6 +102,7 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
             {
 
                 Dash();
+                dashNoise.Play();
 
             }
 
