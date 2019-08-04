@@ -1,5 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿// This exists so that we can tweak values in inspector at runtime without recompiling
+
 using UnityEngine;
 
 public sealed class StatsSingleton : MonoBehaviour
@@ -8,7 +8,20 @@ public sealed class StatsSingleton : MonoBehaviour
     public static StatsSingleton Instance = null;
 
     [SerializeField]
-    float playerSpeed = 5.0f;
+    float playerSpeedWithoutPerk = 5.0f;
+    [SerializeField]
+    float playerSpeedWithPerk = 6.25f;
+    [SerializeField]
+    float playerSpeedMultiplierWithoutArrowWithPerk = 1.5f;
+
+    [SerializeField]
+    float arrowStartingDrawUnits = 5.0f;
+    [SerializeField]
+    float arrowDrawUnitsPerSecondWithoutPerk = 10.0f;
+    [SerializeField]
+    float arrowDrawUnitsPerSecondWithPerk = 15.0f;
+    [SerializeField]
+    float arrowMaxDrawUnits = 15.0f;
 
     [SerializeField]
     float arrowStartingSpeedPerDrawUnitWithoutPerk = 1.5f;
@@ -29,6 +42,62 @@ public sealed class StatsSingleton : MonoBehaviour
     [SerializeField]
     float arrowBouncebackAngleDispersionWithPerk = 30.0f;
 
+    public static float PlayerSpeedWithoutPerk
+    {
+        get
+        {
+            return Instance.playerSpeedWithoutPerk;
+        }
+    }
+
+    public static float PlayerSpeedWithPerk
+    {
+        get
+        {
+            return Instance.playerSpeedWithPerk;
+        }
+    }
+
+    public static float PlayerSpeedMultiplierWithoutArrowWithPerk
+    {
+        get
+        {
+            return Instance.playerSpeedMultiplierWithoutArrowWithPerk;
+        }
+    }
+
+    public static float ArrowStartingDrawUnits
+    {
+        get
+        {
+            return Instance.arrowStartingDrawUnits;
+        }
+    }
+
+    public static float ArrowDrawUnitsPerSecondWithoutPerk
+    {
+        get
+        {
+            return Instance.arrowDrawUnitsPerSecondWithoutPerk;
+        }
+    }
+
+    public static float ArrowDrawUnitsPerSecondWithPerk
+    {
+        get
+        {
+            return Instance.arrowDrawUnitsPerSecondWithPerk;
+        }
+    }
+
+    public static float ArrowMaxDrawUnits
+    {
+        get
+        {
+            return Instance.arrowMaxDrawUnits;
+        }
+    }
+
     public static float ArrowStartingSpeedPerDrawUnitWithoutPerk
     {
         get
@@ -42,14 +111,6 @@ public sealed class StatsSingleton : MonoBehaviour
         get
         {
             return Instance.arrowStartingSpeedPerDrawUnitWithPerk;
-        }
-    }
-
-    public static float PlayerSpeed
-    {
-        get
-        {
-            return Instance.playerSpeed;
         }
     }
 

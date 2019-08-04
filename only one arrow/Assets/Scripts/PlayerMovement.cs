@@ -1,7 +1,10 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 {
+    Player parent;
+
     static float startingDashCooldown = 2.0f; // See arrow for getters affected by perks and stuff
 
     public bool ableToMove = true;
@@ -10,7 +13,14 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
     {
         get
         {
-            return StatsSingleton.PlayerSpeed;
+            float speed = Perks.IsUnlocked(Perk.PlayerSpeed) ? StatsSingleton.PlayerSpeedWithPerk : StatsSingleton.PlayerSpeedWithoutPerk;
+
+            if(Perks.IsUnlocked(Perk.PlayerSpeedWhenWithoutArrow) && !parent.HasArrow)
+            {
+                speed *= StatsSingleton.PlayerSpeedMultiplierWithoutArrowWithPerk;
+            }
+
+            return speed;
         }
     }
 
@@ -25,6 +35,11 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
         {
             return currentDashCooldown / startingDashCooldown;
         }
+    }
+
+    public void Awake()
+    {
+        parent = GetComponent<Player>();
     }
 
     // TODO: allow key bindings, fairly easy with Unity's default input tools

@@ -1,10 +1,31 @@
 ﻿using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 public class PlayerShooting : MonoBehaviour, IArrowHolder
 {
-    static float startingDrawUnits = 5.0f;
-    static float drawUnitsPerSecond = 10.0f;
-    static float maxDrawUnits = 15.0f;
+    static float startingDrawUnits
+    {
+        get
+        {
+            return StatsSingleton.ArrowStartingDrawUnits;
+        }
+    }
+
+    static float drawUnitsPerSecond
+    {
+        get
+        {
+            return Perks.IsUnlocked(Perk.DrawUnitsGainPerSecond) ? StatsSingleton.ArrowDrawUnitsPerSecondWithPerk : StatsSingleton.ArrowDrawUnitsPerSecondWithoutPerk;
+        }
+    }
+    
+    static float maxDrawUnits
+    {
+        get
+        {
+            return StatsSingleton.ArrowMaxDrawUnits;
+        }
+    }  
 
     bool audioCooldown = false;
 
@@ -26,6 +47,14 @@ public class PlayerShooting : MonoBehaviour, IArrowHolder
 
     public float currentDrawUnits = startingDrawUnits;
 
+    public bool HasArrow
+    {
+        get
+        {
+            return arrow != null;
+        }
+    }
+
     public void OnEnable()
     {
         Arrow.OnPickedUpBy += PickUp;
@@ -34,7 +63,7 @@ public class PlayerShooting : MonoBehaviour, IArrowHolder
     public void Update()
     {
 
-        if (arrow == null)
+        if (!HasArrow)
             return; // We're not doing anything if the arrow isn't held
 
         if (Input.GetMouseButton(0)) // LMB held down

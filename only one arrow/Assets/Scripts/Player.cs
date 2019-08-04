@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     static public Action<Player> OnComboChange = delegate { };
 
+    PlayerShooting shooting;
+
     public int ComboCount
     {
         get;
@@ -28,8 +30,17 @@ public class Player : MonoBehaviour
         }
     }
 
+    public bool HasArrow
+    {
+        get
+        {
+            return shooting.HasArrow;
+        }
+    }
+
     public void Awake()
     {
+        shooting = GetComponent<PlayerShooting>();
         MainPlayer = this;
     }
 

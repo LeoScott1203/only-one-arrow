@@ -19,15 +19,15 @@ public enum Perk
 {
     // Always add new perks before Count so that it stays up to date in a proper way - Urist
     // Generic movement
-    PlayerSpeed,
-    PlayerSpeedWhenWithoutArrow,
+    PlayerSpeed, // Implemented
+    PlayerSpeedWhenWithoutArrow, // Implemented
     DashDistance,
     DashRechargeSpeed,
     // Generic attack
-    DrawUnitsGainPerSecond,
-    ArrowStartingSpeedPerDrawUnit,
-    ArrowFalloffAcceleration,
-    ArrowBouncebackDispersion,
+    DrawUnitsGainPerSecond, // Implemented
+    ArrowStartingSpeedPerDrawUnit, // Implemented
+    ArrowFalloffAcceleration, // Implemented
+    ArrowBouncebackDispersion, // Implemented
     // Special dash
     StunDash,
     DoubleDash,
