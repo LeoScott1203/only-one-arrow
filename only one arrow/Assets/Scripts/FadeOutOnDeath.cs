@@ -16,10 +16,19 @@ public class FadeOutOnDeath : MonoBehaviour
     {
 
         Arrow.TriggerDeletion += FadeOut;
+        EnemyMovementBehaviour.TriggerDeletion += FadeOut;
 
     }
 
     void FadeOut( Arrow _ )
+    {
+        Debug.Log("a");
+        Vector3 desiredPos = new Vector3(trans.position.x + (Random.value * 3), trans.position.y + (Random.value * 3), 0);
+        Vector3.Lerp(trans.position, desiredPos, 0.5f);
+
+    }
+
+    void FadeOut(EnemyMovementBehaviour _)
     {
         Debug.Log("a");
         Vector3 desiredPos = new Vector3(trans.position.x + (Random.value * 3), trans.position.y + (Random.value * 3), 0);

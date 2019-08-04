@@ -32,7 +32,7 @@ public class VisualizeBowCharge : MonoBehaviour
         if (chargeLevel == 5 || chargeLevel == 15)
             return;
 
-        arrow.Translate(Vector3.right * Time.deltaTime * -0.15f);
+        arrow.Translate(Vector3.right * Time.deltaTime * -0.1f);
 
     }
 
