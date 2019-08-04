@@ -12,5 +12,10 @@ public class Explosion : MonoBehaviour
     {
         currentScale += scalePerSecond * Time.deltaTime;
         transform.localScale = new Vector3(currentScale, currentScale, 1);
+
+        if(currentScale >= maxScale)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
