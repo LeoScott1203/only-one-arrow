@@ -13,6 +13,7 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
     float speed = 0.1f;
 
     static public Action<EnemyMovementBehaviour> TriggerMenu = delegate { };
+    static public Action<EnemyMovementBehaviour> TriggerDeletion = delegate { };
 
     public void Update()
     {
