@@ -98,12 +98,14 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     {
         EnemyMovementBehaviour.TriggerMenu += OnEnd;
         Reset.OnReset += OnReset;
+        PlayerMovement.OnMagnetDash += OnMagnetDash;
     }
 
     public void OnDisable()
     {
         EnemyMovementBehaviour.TriggerMenu -= OnEnd;
         Reset.OnReset -= OnReset;
+        PlayerMovement.OnMagnetDash -= OnMagnetDash;
     }
 
     void OnReset()
@@ -112,6 +114,21 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         PickUpBy(Player.MainPlayer.GetComponent<PlayerShooting>());
 
         completed = false;
+    }
+
+    void OnMagnetDash(Vector3 source)
+    {
+        Vector2 lookDirection = new Vector2(source.x - transform.position.x, source.y - transform.position.y);
+        transform.up = lookDirection;
+
+        if(Vector3.Distance(transform.position, source) > 3.0f)
+        {
+            transform.Translate(Vector3.right * 3.0f); // Some magneting
+        }
+        else
+        {
+            transform.position = source;
+        }
     }
 
     void OnEnd(EnemyMovementBehaviour EMB)

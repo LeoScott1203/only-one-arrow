@@ -1,8 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 [RequireComponent(typeof(Player))]
 public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 {
+    public static Action<Vector3> OnMagnetDash = delegate { };
+
     Player parent;
 
     public AudioSource dashNoise;
@@ -164,6 +167,11 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
         if(Perks.IsUnlocked(Perk.TelegibDash))
         {
             parent.ActivateTelegib();
+        }
+
+        if(Perks.IsUnlocked(Perk.MagnetDash))
+        {
+            OnMagnetDash(transform.position);
         }
 
         dashesInARow++;

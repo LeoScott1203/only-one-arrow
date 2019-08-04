@@ -44,7 +44,7 @@ public enum Perk
     // Special dash
     StunDash,
     DoubleDash, // Implemented (needs test)
-    MagnetDash,
+    MagnetDash, // Implemented (needs test)
     TelegibDash, // Implemented (needs test)
     // Special attack
     PhantomArrow,
