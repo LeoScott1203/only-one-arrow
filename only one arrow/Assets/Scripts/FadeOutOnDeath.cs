@@ -15,17 +15,17 @@ public class FadeOutOnDeath : MonoBehaviour
 
     }
 
-    void FadeOut( Arrow _ )
+    void FadeOut(Arrow _)
     {
 
-        Destroy(gameObject, 1);
+        Destroy(gameObject);
 
     }
 
     void FadeOut(EnemyMovementBehaviour _)
     {
 
-        Destroy(gameObject, 1);
+        Destroy(gameObject);
 
     }
 

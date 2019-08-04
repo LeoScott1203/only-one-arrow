@@ -71,6 +71,7 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
             {
                 if(col.GetComponent<Player>().IsTelegibbing)
                 {
+                    dead = true;
                     TriggerDeletion(this);
                 }
                 else
@@ -111,7 +112,7 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
 
     void OnReset()
     {
-        //TriggerDeletion(this);
+        TriggerDeletion(this);
     }
 
     public static void ImJustHookingThingsUpToThisBecauseItsFaster() // This is absolutely atrocious and I'll want to clean it up sliiightly later; need a working product first
