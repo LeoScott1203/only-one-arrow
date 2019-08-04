@@ -44,6 +44,13 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
 
         if (!dead)
         {
+            Explosion explosion = col.GetComponent<Explosion>();
+
+            if(explosion != null)
+            {
+                TriggerDeletion(this);
+                return;
+            }
 
             if (col.gameObject.tag == "Player")
             {

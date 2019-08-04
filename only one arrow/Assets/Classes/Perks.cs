@@ -48,8 +48,8 @@ public enum Perk
     TelegibDash, // Implemented (needs test)
     // Special attack
     PhantomArrow,
-    ExplosiveArrow,
-    PiercingArrow,
+    ExplosiveArrow, // Implemented (needs test)
+    PiercingArrow, // Implemented (needs test)
     TeleportArrow, // Implemented
     Count
 }
