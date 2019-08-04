@@ -59,6 +59,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     static public Action<IArrowHolder, Arrow> OnPickedUpBy = delegate { };
     static public Action<Collider2D, ITarget, Arrow> OnHit = delegate { };
     static public Action<Arrow> OnArrowStoppedWithoutHitting = delegate { };
+    static public Action OnSpecialShot = delegate { };
 
     new Collider2D collider; // Ugh new and legacy named variables.
 
@@ -75,6 +76,8 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     }
 
     bool hasHit = false;
+
+    bool specialAbilityUsed = false;
 
     public float ChargeLevel
     {
@@ -119,6 +122,16 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
                     }
 
                     _currentState = State.Resting;
+
+                    if(specialAbilityUsed)
+                    {
+                        specialAbilityUsed = false;
+
+                        if(Perks.IsUnlocked(Perk.TeleportArrow))
+                        {
+                            Player.MainPlayer.transform.position = transform.position;
+                        }
+                    }
                 }
 
                 break;
@@ -165,10 +178,16 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
     }
 
-    public void Shoot(Transform shootPoint, float drawUnits)
+    public void Shoot(Transform shootPoint, float drawUnits, bool usingSpecial)
     {
         if (!completed)
         {
+            if(usingSpecial)
+            {
+                OnSpecialShot();
+                specialAbilityUsed = true;
+            }
+
             _currentState = State.InFlight;
 
             hasHit = false;

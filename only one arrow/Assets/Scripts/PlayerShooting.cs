@@ -47,6 +47,8 @@ public class PlayerShooting : MonoBehaviour, IArrowHolder
 
     public float currentDrawUnits;
 
+    bool usingSpecial = false;
+
     public bool HasArrow
     {
         get
@@ -71,30 +73,37 @@ public class PlayerShooting : MonoBehaviour, IArrowHolder
         if (!HasArrow)
             return; // We're not doing anything if the arrow isn't held
 
-        if (Input.GetMouseButton(0)) // LMB held down
+        if (Input.GetMouseButton(1))
+        {
+            usingSpecial = true;
+        }
+
+        if (Input.GetMouseButton(0) || Input.GetMouseButton(1)) // LMB/RMB held down
         {
             currentDrawUnits = Mathf.Min(maxDrawUnits, currentDrawUnits + drawUnitsPerSecond * Time.deltaTime);
 
             if (!audioCooldown)
             {
-                GetComponent<AudioSource>().Play();
+                GetComponent<AudioSource>().Play(); // This should be cached
                 audioCooldown = true;
             }
         }
 
-        if (Input.GetMouseButtonUp(0)) // LMB; TODO: better behaviour but this is just for testing
+        if (Input.GetMouseButtonUp(0) || Input.GetMouseButtonUp(1)) // LMB; TODO: better behaviour but this is just for testing
         {
-            Shoot();
+            Shoot(Player.MainPlayer.AbilityReady && usingSpecial);
             GetComponent<AudioSource>().Stop();
             audioCooldown = false;
             shootAudio.Play();
+
+            usingSpecial = false;
         }
 
     }
 
-    void Shoot()
+    void Shoot(bool usingSpecial)
     {
-        arrow.Shoot(_shootPoint, currentDrawUnits);
+        arrow.Shoot(_shootPoint, currentDrawUnits, usingSpecial);
         currentDrawUnits = startingDrawUnits;
         arrow = null;
     }
