@@ -37,6 +37,6 @@ public enum Perk
     PhantomArrow,
     ExplosiveArrow,
     PiercingArrow,
-    TeleportArrow,
+    TeleportArrow, // Implemented
     Count
 }

@@ -48,12 +48,14 @@ public class Player : MonoBehaviour
     {
         Arrow.OnArrowStoppedWithoutHitting += OnArrowStoppedWithoutHitting;
         Arrow.OnHit += OnArrowHit;
+        Arrow.OnSpecialShot += OnAbilityUsed;
     }
 
     public void OnDisable()
     {
         Arrow.OnArrowStoppedWithoutHitting -= OnArrowStoppedWithoutHitting;
         Arrow.OnHit -= OnArrowHit;
+        Arrow.OnSpecialShot += OnAbilityUsed;
     }
 
     void OnArrowStoppedWithoutHitting(Arrow arrow)

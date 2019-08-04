@@ -26,6 +26,7 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 
     Vector3 mousePosition;
     Vector2 lookDirection;
+    Vector2 moveDirection = Vector2.up; // Doesn't matter, but there should be a default nonetheless
 
     float currentDashCooldown = 0.0f;
 
@@ -48,31 +49,37 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 
         if (ableToMove)
         {
-            Vector3 newPosition = transform.position;
+            Vector2 moveDirection = Vector2.zero;
 
             if (Input.GetKey(KeyCode.A))
             {
-                newPosition += Vector3.left * speed * Time.deltaTime;
+                moveDirection += Vector2.left * speed * Time.deltaTime;
             }
 
             if (Input.GetKey(KeyCode.D))
             {
-                newPosition += Vector3.right * speed * Time.deltaTime;
+                moveDirection += Vector2.right * speed * Time.deltaTime;
             }
 
             if (Input.GetKey(KeyCode.W))
             {
-                newPosition += Vector3.up * speed * Time.deltaTime;
+                moveDirection += Vector2.up * speed * Time.deltaTime;
             }
 
             if (Input.GetKey(KeyCode.S))
             {
-                newPosition += Vector3.down * speed * Time.deltaTime;
+                moveDirection += Vector2.down * speed * Time.deltaTime;
             }
 
-            if(MapBoundaries.InBounds(newPosition))
+            if(moveDirection != Vector2.zero)
             {
-                transform.position = newPosition;
+                Vector2 newPosition = (Vector2)transform.position + moveDirection;
+
+                if(MapBoundaries.InBounds(newPosition))
+                {
+                    transform.position = newPosition;
+                    this.moveDirection = moveDirection.normalized;
+                }
             }
 
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
