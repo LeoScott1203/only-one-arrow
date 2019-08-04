@@ -43,7 +43,7 @@ public enum Perk
     ArrowBouncebackDispersion, // Implemented
     // Special dash
     StunDash,
-    DoubleDash,
+    DoubleDash, // Implemented
     MagnetDash,
     TelegibDash,
     // Special attack

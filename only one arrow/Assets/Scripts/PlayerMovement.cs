@@ -46,6 +46,15 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 
     float currentDashCooldown = 0.0f;
 
+    int dashesInARow = 0;
+    int maxDashesInARow
+    {
+        get
+        {
+            return Perks.IsUnlocked(Perk.DoubleDash) ? 2 : 1;
+        }
+    }
+
     public float ChargeLevel
     {
         get
@@ -114,7 +123,7 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
                 }
             }
 
-            if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && currentDashCooldown == 0.0f)
+            if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && dashesInARow < maxDashesInARow)
             {
 
                 Dash();
@@ -131,6 +140,11 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 
                 currentDashCooldown = Mathf.Max(0.0f, currentDashCooldown - Time.deltaTime);
 
+                if(currentDashCooldown == 0.0f)
+                {
+                    dashesInARow = 0;
+                }
+
             }
 
         }
@@ -142,6 +156,11 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
         // TODO: this needs to dash towards where you're moving, but I just need to test some things so it doesn't actually do anything atm
         transform.position += (Vector3)moveDirection * dashDistance;
 
-        currentDashCooldown = startingDashCooldown;
+        if(dashesInARow == 0)
+        {
+            currentDashCooldown = startingDashCooldown;
+        }
+
+        dashesInARow++;
     }
 }
