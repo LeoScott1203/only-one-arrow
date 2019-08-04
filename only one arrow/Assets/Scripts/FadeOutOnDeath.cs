@@ -6,31 +6,29 @@ public class FadeOutOnDeath : MonoBehaviour
 {
 
     GameObject SgameObject;
+    EnemyMovementBehaviour EMB;
 
     void Start()
     {
+        EMB = GetComponent<EnemyMovementBehaviour>();
         SgameObject = this.gameObject;
     }
 
    public void OnEnable()
     {
 
-        Arrow.TriggerDeletion += FadeOut;
         EnemyMovementBehaviour.TriggerDeletion += FadeOut;
 
     }
 
-    void FadeOut(Arrow _)
+    void FadeOut(EnemyMovementBehaviour EMB)
     {
 
-        Destroy(SgameObject);
-
-    }
-
-    void FadeOut(EnemyMovementBehaviour _)
-    {
-
-        Destroy(SgameObject);
+        if(this.EMB == EMB)
+        {
+            Destroy(SgameObject);
+            Debug.Log("asdad");
+        }
 
     }
 

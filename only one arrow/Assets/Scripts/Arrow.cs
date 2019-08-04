@@ -63,7 +63,6 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     static public Action<Collider2D, ITarget, Arrow> OnHit = delegate { };
     static public Action<Arrow> OnArrowStoppedWithoutHitting = delegate { };
     static public Action OnSpecialShot = delegate { };
-    static public Action<Arrow> TriggerDeletion = delegate { };
 
     new Collider2D collider; // Ugh new and legacy named variables.
 
@@ -227,8 +226,7 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
                 killAudio.Play();
                 EMB.dead = true;
-                TriggerDeletion(this);
-
+                EMB.TriggerDeletionFromElsewhere();
             }
 
         }

@@ -120,4 +120,9 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
         Player.MainPlayer.GetComponent<PlayerMovement>().ableToMove = false;
         TriggerMenu(FindObjectOfType<EnemyMovementBehaviour>());
     }
+
+    public void TriggerDeletionFromElsewhere()
+    {
+        TriggerDeletion(this);
+    }
 }
