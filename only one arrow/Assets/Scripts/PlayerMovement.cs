@@ -48,18 +48,32 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 
         if (ableToMove)
         {
+            Vector3 newPosition = transform.position;
 
             if (Input.GetKey(KeyCode.A))
-                transform.position += Vector3.left * speed * Time.deltaTime;
+            {
+                newPosition += Vector3.left * speed * Time.deltaTime;
+            }
 
             if (Input.GetKey(KeyCode.D))
-                transform.position += Vector3.right * speed * Time.deltaTime;
+            {
+                newPosition += Vector3.right * speed * Time.deltaTime;
+            }
 
             if (Input.GetKey(KeyCode.W))
-                transform.position += Vector3.up * speed * Time.deltaTime;
+            {
+                newPosition += Vector3.up * speed * Time.deltaTime;
+            }
 
             if (Input.GetKey(KeyCode.S))
-                transform.position += Vector3.down * speed * Time.deltaTime;
+            {
+                newPosition += Vector3.down * speed * Time.deltaTime;
+            }
+
+            if(MapBoundaries.InBounds(newPosition))
+            {
+                transform.position = newPosition;
+            }
 
             if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
             {

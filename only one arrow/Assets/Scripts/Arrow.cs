@@ -106,6 +106,11 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
                 falloff = Mathf.Min(falloffMax, falloff + falloffAcceleration * Time.deltaTime);
                 speed = Mathf.Max(0f, speed - falloff);
 
+                if(!MapBoundaries.InBounds(transform.position))
+                {
+                    Bounce();
+                }
+
                 if(speed == 0f)
                 {
                     if(!hasHit)
@@ -190,6 +195,11 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     {
         hasHit = true;
 
+        Bounce();
+    }
+
+    void Bounce()
+    {
         float angle = UnityEngine.Random.Range(180 - bouncebackAngleDispersion, 180 + bouncebackAngleDispersion);
 
         transform.Rotate(0, 0, angle);

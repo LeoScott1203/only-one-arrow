@@ -45,7 +45,7 @@ public class PlayerShooting : MonoBehaviour, IArrowHolder
     [SerializeField]
     Arrow arrow;
 
-    public float currentDrawUnits = startingDrawUnits;
+    public float currentDrawUnits;
 
     public bool HasArrow
     {
@@ -53,6 +53,11 @@ public class PlayerShooting : MonoBehaviour, IArrowHolder
         {
             return arrow != null;
         }
+    }
+
+    public void Start()
+    {
+        currentDrawUnits = startingDrawUnits;
     }
 
     public void OnEnable()
