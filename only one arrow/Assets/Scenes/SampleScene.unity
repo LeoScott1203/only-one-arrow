@@ -192,6 +192,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6020621852832020046, guid: 43978e80e19a25641b9bea52e3b24117,
+        type: 3}
+      propertyPath: shootAudio
+      value: 
+      objectReference: {fileID: 546524650}
     - target: {fileID: 6020621853979639037, guid: 43978e80e19a25641b9bea52e3b24117,
         type: 3}
       propertyPath: m_SortingOrder
@@ -202,6 +207,11 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 6020621852707267219, guid: 43978e80e19a25641b9bea52e3b24117,
+        type: 3}
+      propertyPath: killAudio
+      value: 
+      objectReference: {fileID: 1425391810}
     - target: {fileID: 6020621853510137911, guid: 43978e80e19a25641b9bea52e3b24117,
         type: 3}
       propertyPath: m_SortingOrder
@@ -232,16 +242,6 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6020621852832020046, guid: 43978e80e19a25641b9bea52e3b24117,
-        type: 3}
-      propertyPath: shootAudio
-      value: 
-      objectReference: {fileID: 546524650}
-    - target: {fileID: 6020621852707267219, guid: 43978e80e19a25641b9bea52e3b24117,
-        type: 3}
-      propertyPath: killAudio
-      value: 
-      objectReference: {fileID: 1425391810}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43978e80e19a25641b9bea52e3b24117, type: 3}
 --- !u!4 &74413753 stripped
@@ -595,7 +595,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573985425}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
   m_Camera: {fileID: 0}
@@ -53336,13 +53336,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 921304582}
-    characterCount: 0
+    characterCount: 7
     spriteCount: 0
     spaceCount: 0
-    wordCount: 0
+    wordCount: 1
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 1
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -53952,7 +53952,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 225}
+  m_AnchoredPosition: {x: 0, y: -102}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1691610349
@@ -54095,8 +54095,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 375}
-  m_SizeDelta: {x: 604, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 604, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1781504661
 MonoBehaviour:
@@ -54153,7 +54153,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_textAlignment: 257
+  m_textAlignment: 514
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -54163,7 +54163,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: 0
+  m_firstOverflowCharacterIndex: -1
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -54187,13 +54187,13 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1781504661}
-    characterCount: 0
+    characterCount: 9
     spriteCount: 0
-    spaceCount: 0
-    wordCount: 0
+    spaceCount: 1
+    wordCount: 2
     linkCount: 0
-    lineCount: 0
-    pageCount: 0
+    lineCount: 1
+    pageCount: 1
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -54247,7 +54247,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f04740d3d09974da18797c3d43cff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
+  playerSpeedWithoutPerk: 5
+  playerSpeedWithPerk: 6.25
+  playerSpeedMultiplierWithoutArrowWithPerk: 1.5
+  arrowStartingDrawUnits: 5
+  arrowDrawUnitsPerSecondWithoutPerk: 10
+  arrowDrawUnitsPerSecondWithPerk: 15
+  arrowMaxDrawUnits: 15
   arrowStartingSpeedPerDrawUnitWithoutPerk: 1.5
   arrowStartingSpeedPerDrawUnitWithPerk: 2
   arrowFalloffStart: 0
