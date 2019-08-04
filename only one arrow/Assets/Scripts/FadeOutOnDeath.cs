@@ -27,7 +27,6 @@ public class FadeOutOnDeath : MonoBehaviour
         if(this.EMB == EMB)
         {
             Destroy(SgameObject);
-            Debug.Log("asdad");
         }
 
     }

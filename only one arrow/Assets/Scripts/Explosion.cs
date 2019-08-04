@@ -4,7 +4,7 @@ public class Explosion : MonoBehaviour
 {
     public bool stunning = false;
     
-    static float scalePerSecond = 10.0f;
+    static float scalePerSecond = 50.0f;
 
     [SerializeField]
     float maxScale = 5.0f;
