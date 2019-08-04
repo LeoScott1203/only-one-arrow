@@ -10,6 +10,9 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
     // Gets multiplied by initial draw units (based on how long the shooting button has been held for )
 
+    [SerializeField]
+    Explosion explosionPrefab;
+
     bool completed = false;
 
     public AudioSource killAudio;
@@ -261,7 +264,15 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     {
         hasHit = true;
 
-        Bounce();
+        if(specialAbilityUsed && Perks.IsUnlocked(Perk.ExplosiveArrow))
+        {
+            MakeExplosion();
+        }
+
+        if(!(specialAbilityUsed && Perks.IsUnlocked(Perk.PiercingArrow)))
+        {
+            Bounce();
+        }
     }
 
     void Bounce()
@@ -269,6 +280,11 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         float angle = UnityEngine.Random.Range(180 - bouncebackAngleDispersion, 180 + bouncebackAngleDispersion);
 
         transform.Rotate(0, 0, angle);
+    }
+
+    void MakeExplosion()
+    {
+        GameObject.Instantiate(explosionPrefab, transform.position, transform.rotation);
     }
 
     public enum State
