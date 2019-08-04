@@ -81,4 +81,10 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
 
     }
 
+    public static void ImJustHookingThingsUpToThisBecauseItsFaster() // This is absolutely atrocious and I'll want to clean it up sliiightly later; need a working product first
+    {
+        Player.MainPlayer.GetComponent<PlayerMovement>().ableToMove = false;
+        TriggerMenu(FindObjectOfType<EnemyMovementBehaviour>());
+        TriggerDeletion(FindObjectOfType<EnemyMovementBehaviour>());
+    }
 }
