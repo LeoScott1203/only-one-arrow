@@ -53546,7 +53546,7 @@ MonoBehaviour:
   startTimeBetweenSpawns: 5
   minTimeBetweenSpawns: 1
   reduceTimeBetweenSpawnsKillFactor: 0.1
-  enemyPrefab: {fileID: 2681106968553527585, guid: 261b2443aeb6a5f43a2e167ad18d32d0,
+  enemyPrefab: {fileID: 1463465639698714817, guid: 261b2443aeb6a5f43a2e167ad18d32d0,
     type: 3}
 --- !u!4 &1216709029
 Transform:

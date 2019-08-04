@@ -7,19 +7,23 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
     private bool completed = false;
     public bool dead = false;
 
+    Color _tempColor;
+
     [SerializeField]
     float speed = 0.1f;
 
     static public Action<EnemyMovementBehaviour> TriggerMenu = delegate { };
+    static public Action<EnemyMovementBehaviour> TriggerDeletion = delegate { };
 
     public void Update()
     {
 
-        if (completed)
+        if ( completed || dead )
+        {
+
             return;
 
-        if (dead)
-            return;
+        }
 
         DetermineFacing();
         Move();
@@ -32,6 +36,7 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
         PlayerMovement PM = col.gameObject.GetComponent<PlayerMovement>();
         PM.ableToMove = false;
         TriggerMenu(this);
+        TriggerDeletion(this);
 
     }
 
