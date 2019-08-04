@@ -5,7 +5,21 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 {
     Player parent;
 
-    static float startingDashCooldown = 2.0f; // See arrow for getters affected by perks and stuff
+    static float startingDashCooldown //2.0f
+    {
+        get
+        {
+            return Perks.IsUnlocked(Perk.DashRechargeSpeed) ? StatsSingleton.StartingDashCooldownWithPerk : StatsSingleton.StartingDashCooldownWithoutPerk;
+        }
+    }
+
+    static float dashDistance
+    {
+        get
+        {
+            return Perks.IsUnlocked(Perk.DashDistance) ? StatsSingleton.DashDistanceWithPerk : StatsSingleton.DashDistanceWithoutPerk;
+        }
+    }
 
     public bool ableToMove = true;
 
@@ -82,7 +96,7 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
                 }
             }
 
-            if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+            if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && currentDashCooldown == 0.0f)
             {
 
                 Dash();
@@ -107,6 +121,7 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
     void Dash()
     {
         // TODO: this needs to dash towards where you're moving, but I just need to test some things so it doesn't actually do anything atm
+        transform.position += (Vector3)moveDirection * dashDistance;
 
         currentDashCooldown = startingDashCooldown;
     }

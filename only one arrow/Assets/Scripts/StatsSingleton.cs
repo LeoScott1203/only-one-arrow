@@ -15,6 +15,15 @@ public sealed class StatsSingleton : MonoBehaviour
     float playerSpeedMultiplierWithoutArrowWithPerk = 1.5f;
 
     [SerializeField]
+    float startingDashCooldownWithoutPerk = 2.0f;
+    [SerializeField]
+    float startingDashCooldownWithPerk = 1.5f;
+    [SerializeField]
+    float dashDistanceWithoutPerk = 1.0f;
+    [SerializeField]
+    float dashDistanceWithPerk = 1.5f;
+
+    [SerializeField]
     float arrowStartingDrawUnits = 5.0f;
     [SerializeField]
     float arrowDrawUnitsPerSecondWithoutPerk = 10.0f;
@@ -63,6 +72,38 @@ public sealed class StatsSingleton : MonoBehaviour
         get
         {
             return Instance.playerSpeedMultiplierWithoutArrowWithPerk;
+        }
+    }
+
+    public static float StartingDashCooldownWithoutPerk
+    {
+        get
+        {
+            return Instance.startingDashCooldownWithoutPerk;
+        }
+    }
+
+    public static float StartingDashCooldownWithPerk
+    {
+        get
+        {
+            return Instance.startingDashCooldownWithPerk;
+        }
+    }
+
+    public static float DashDistanceWithoutPerk
+    {
+        get
+        {
+            return Instance.dashDistanceWithoutPerk;
+        }
+    }
+
+    public static float DashDistanceWithPerk
+    {
+        get
+        {
+            return Instance.dashDistanceWithPerk;
         }
     }
 
