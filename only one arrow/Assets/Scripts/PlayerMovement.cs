@@ -85,6 +85,7 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
     {
         ableToMove = true;
         currentDashCooldown = 0.0f;
+        dashesInARow = 0;
     }
 
     // TODO: allow key bindings, fairly easy with Unity's default input tools
