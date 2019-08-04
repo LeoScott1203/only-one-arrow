@@ -12,11 +12,19 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
     [SerializeField]
     float speed = 0.1f;
 
+    float stunDuration = 0.0f;
+
     static public Action<EnemyMovementBehaviour> TriggerMenu = delegate { };
     static public Action<EnemyMovementBehaviour> TriggerDeletion = delegate { };
 
     public void Update()
     {
+        if(stunDuration > 0)
+        {
+            stunDuration = Mathf.Max(0.0f, stunDuration - Time.deltaTime);
+
+            return;
+        }
 
         if ( completed || dead )
         {
@@ -48,11 +56,18 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
 
             if(explosion != null)
             {
-                TriggerDeletion(this);
+                if(explosion.stunning)
+                {
+                    stunDuration = 1.0f;
+                }
+                else
+                {
+                    TriggerDeletion(this);
+                }
                 return;
             }
 
-            if (col.gameObject.tag == "Player")
+            if (col.gameObject.tag == "Player" && stunDuration == 0.0f)
             {
                 if(col.GetComponent<Player>().IsTelegibbing)
                 {

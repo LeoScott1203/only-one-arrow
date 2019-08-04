@@ -42,7 +42,7 @@ public enum Perk
     ArrowFalloffAcceleration, // Implemented
     ArrowBouncebackDispersion, // Implemented
     // Special dash
-    StunDash,
+    StunDash, // Implemented (needs test)
     DoubleDash, // Implemented (needs test)
     MagnetDash, // Implemented (needs test)
     TelegibDash, // Implemented (needs test)

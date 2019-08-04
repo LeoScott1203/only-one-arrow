@@ -251,6 +251,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 6314894967927011137, guid: 6d8d29c7a88002843a3790e6d6dd94b4,
     type: 3}
+  stunExplosionPrefab: {fileID: 6973485469892747700, guid: 0ac973733f9f7a94383075a7f2d4b181,
+    type: 3}
   killAudio: {fileID: 0}
 --- !u!50 &7817275023999335039
 Rigidbody2D:

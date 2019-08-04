@@ -516,6 +516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60112886c716ade4aa02b2d492f6b615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stunExplosionPrefab: {fileID: 6973485469892747700, guid: 0ac973733f9f7a94383075a7f2d4b181,
+    type: 3}
   dashNoise: {fileID: 0}
   ableToMove: 1
 --- !u!114 &6020621852832020049

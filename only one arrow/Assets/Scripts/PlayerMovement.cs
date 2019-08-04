@@ -8,6 +8,9 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
 
     Player parent;
 
+    [SerializeField]
+    Explosion stunExplosionPrefab;
+
     public AudioSource dashNoise;
 
     static float startingDashCooldown //2.0f
@@ -173,6 +176,11 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
         if(Perks.IsUnlocked(Perk.MagnetDash))
         {
             OnMagnetDash(transform.position);
+        }
+
+        if(Perks.IsUnlocked(Perk.StunDash))
+        {
+            GameObject.Instantiate(stunExplosionPrefab, transform.position, transform.rotation);
         }
 
         dashesInARow++;
