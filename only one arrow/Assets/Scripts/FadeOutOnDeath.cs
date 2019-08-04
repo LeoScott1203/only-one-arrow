@@ -4,38 +4,26 @@ using UnityEngine;
 
 public class FadeOutOnDeath : MonoBehaviour
 {
-    Color _tempColor;
+
+    Transform trans;
 
     void Start()
     {
-
-        _tempColor = GetComponent<SpriteRenderer>().color;
-
+        trans = GetComponent<Transform>();
     }
 
    public void OnEnable()
     {
 
-        EnemyMovementBehaviour.TriggerDeletion += FadeOut;
+        Arrow.TriggerDeletion += FadeOut;
 
     }
 
-    void FadeOut( EnemyMovementBehaviour EMB ) // not being called
+    void FadeOut( Arrow _ )
     {
-
-        if (_tempColor.a > 0f)
-        {
-
-            _tempColor.a -= Time.deltaTime / 0.5f;
-            GetComponent<SpriteRenderer>().color = _tempColor;
-
-        }
-        else if (_tempColor.a <= 0f)
-        {
-
-            Destroy(GetComponent<GameObject>());
-
-        }
+        Debug.Log("a");
+        Vector3 desiredPos = new Vector3(trans.position.x + (Random.value * 3), trans.position.y + (Random.value * 3), 0);
+        Vector3.Lerp(trans.position, desiredPos, 0.5f);
 
     }
 

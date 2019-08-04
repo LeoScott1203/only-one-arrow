@@ -13,7 +13,6 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
     float speed = 0.1f;
 
     static public Action<EnemyMovementBehaviour> TriggerMenu = delegate { };
-    static public Action<EnemyMovementBehaviour> TriggerDeletion = delegate { };
 
     public void Update()
     {
@@ -36,7 +35,6 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
         PlayerMovement PM = col.gameObject.GetComponent<PlayerMovement>();
         PM.ableToMove = false;
         TriggerMenu(this);
-        TriggerDeletion(this);
 
     }
 
@@ -84,13 +82,12 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
 
     void OnReset()
     {
-        TriggerDeletion(this);
+        //TriggerDeletion(this);
     }
 
     public static void ImJustHookingThingsUpToThisBecauseItsFaster() // This is absolutely atrocious and I'll want to clean it up sliiightly later; need a working product first
     {
         Player.MainPlayer.GetComponent<PlayerMovement>().ableToMove = false;
         TriggerMenu(FindObjectOfType<EnemyMovementBehaviour>());
-        TriggerDeletion(FindObjectOfType<EnemyMovementBehaviour>());
     }
 }
