@@ -192,6 +192,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6020621852832020047, guid: 43978e80e19a25641b9bea52e3b24117,
+        type: 3}
+      propertyPath: dashNoise
+      value: 
+      objectReference: {fileID: 1805098268}
     - target: {fileID: 6020621852832020046, guid: 43978e80e19a25641b9bea52e3b24117,
         type: 3}
       propertyPath: shootAudio
@@ -206,6 +211,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020621853496874028, guid: 43978e80e19a25641b9bea52e3b24117,
+        type: 3}
+      propertyPath: colorAtMin.r
+      value: 0.7490196
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020621853496874028, guid: 43978e80e19a25641b9bea52e3b24117,
+        type: 3}
+      propertyPath: colorAtMin.g
+      value: 0.8980393
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020621853496874028, guid: 43978e80e19a25641b9bea52e3b24117,
+        type: 3}
+      propertyPath: colorAtMin.b
+      value: 0.96470594
       objectReference: {fileID: 0}
     - target: {fileID: 6020621852707267219, guid: 43978e80e19a25641b9bea52e3b24117,
         type: 3}
@@ -241,26 +261,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingLayer
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6020621852832020047, guid: 43978e80e19a25641b9bea52e3b24117,
-        type: 3}
-      propertyPath: dashNoise
-      value: 
-      objectReference: {fileID: 1805098268}
-    - target: {fileID: 6020621853496874028, guid: 43978e80e19a25641b9bea52e3b24117,
-        type: 3}
-      propertyPath: colorAtMin.r
-      value: 0.7490196
-      objectReference: {fileID: 0}
-    - target: {fileID: 6020621853496874028, guid: 43978e80e19a25641b9bea52e3b24117,
-        type: 3}
-      propertyPath: colorAtMin.g
-      value: 0.8980393
-      objectReference: {fileID: 0}
-    - target: {fileID: 6020621853496874028, guid: 43978e80e19a25641b9bea52e3b24117,
-        type: 3}
-      propertyPath: colorAtMin.b
-      value: 0.96470594
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43978e80e19a25641b9bea52e3b24117, type: 3}
@@ -40196,7 +40196,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1691610352}
-        m_MethodName: reset
+        m_MethodName: TriggerReset
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -40590,8 +40590,8 @@ MonoBehaviour:
   playerSpeedMultiplierWithoutArrowWithPerk: 1.5
   startingDashCooldownWithoutPerk: 2
   startingDashCooldownWithPerk: 1.5
-  dashDistanceWithoutPerk: 1
-  dashDistanceWithPerk: 1.5
+  dashDistanceWithoutPerk: 3
+  dashDistanceWithPerk: 4
   arrowStartingDrawUnits: 5
   arrowDrawUnitsPerSecondWithoutPerk: 10
   arrowDrawUnitsPerSecondWithPerk: 15
