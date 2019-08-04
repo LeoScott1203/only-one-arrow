@@ -5,12 +5,7 @@ using UnityEngine;
 public class FadeOutOnDeath : MonoBehaviour
 {
 
-    Transform trans;
-
-    void Start()
-    {
-        trans = GetComponent<Transform>();
-    }
+    GameObject gameObject;
 
    public void OnEnable()
     {
@@ -22,17 +17,15 @@ public class FadeOutOnDeath : MonoBehaviour
 
     void FadeOut( Arrow _ )
     {
-        Debug.Log("a");
-        Vector3 desiredPos = new Vector3(trans.position.x + (Random.value * 3), trans.position.y + (Random.value * 3), 0);
-        Vector3.Lerp(trans.position, desiredPos, 0.5f);
+
+        Destroy(gameObject, 1);
 
     }
 
     void FadeOut(EnemyMovementBehaviour _)
     {
 
-        Vector3 desiredPos = new Vector3(trans.position.x + (Random.value * 3), trans.position.y + (Random.value * 3), 0);
-        Vector3.Lerp(trans.position, desiredPos, 0.5f);
+        Destroy(gameObject, 1);
 
     }
 
