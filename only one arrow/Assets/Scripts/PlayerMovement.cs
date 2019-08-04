@@ -59,6 +59,22 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
         parent = GetComponent<Player>();
     }
 
+    public void OnEnable()
+    {
+        Reset.OnReset += OnReset;
+    }
+
+    public void OnDisable()
+    {
+        Reset.OnReset -= OnReset;
+    }
+
+    void OnReset()
+    {
+        ableToMove = true;
+        currentDashCooldown = 0.0f;
+    }
+
     // TODO: allow key bindings, fairly easy with Unity's default input tools
     public void Update()
     {

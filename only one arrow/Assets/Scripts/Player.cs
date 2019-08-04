@@ -49,13 +49,15 @@ public class Player : MonoBehaviour
         Arrow.OnArrowStoppedWithoutHitting += OnArrowStoppedWithoutHitting;
         Arrow.OnHit += OnArrowHit;
         Arrow.OnSpecialShot += OnAbilityUsed;
+        Reset.OnReset += OnReset;
     }
 
     public void OnDisable()
     {
         Arrow.OnArrowStoppedWithoutHitting -= OnArrowStoppedWithoutHitting;
         Arrow.OnHit -= OnArrowHit;
-        Arrow.OnSpecialShot += OnAbilityUsed;
+        Arrow.OnSpecialShot -= OnAbilityUsed;
+        Reset.OnReset -= OnReset;
     }
 
     void OnArrowStoppedWithoutHitting(Arrow arrow)
@@ -91,5 +93,14 @@ public class Player : MonoBehaviour
     {
         comboSinceLastAbilityUsage = 0;
         OnComboChange(this);
+    }
+    
+    void OnReset()
+    {
+        ComboCount = 0;
+        comboSinceLastAbilityUsage = 0;
+        OnComboChange(this);
+
+        transform.position = Vector3.zero;
     }
 }

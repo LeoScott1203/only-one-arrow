@@ -34,11 +34,22 @@ public class EnemySpawner : MonoBehaviour
     {
         Arrow.OnHit += OnEnemyKilled; // Since atm we can just assume it's enemies and all enemies have 1 hp
         EnemyMovementBehaviour.TriggerMenu += OnEnd;
+        Reset.OnReset += OnReset;
     }
 
     public void OnDisable()
     {
-        Arrow.OnHit += OnEnemyKilled; // Since we can just assume it's enemies and all enemies have 1 hp
+        Arrow.OnHit -= OnEnemyKilled; // Since we can just assume it's enemies and all enemies have 1 hp
+        EnemyMovementBehaviour.TriggerMenu -= OnEnd;
+        Reset.OnReset -= OnReset;
+    }
+
+    void OnReset()
+    {
+        timeBetweenSpawns = startTimeBetweenSpawns;
+        timeSinceLastSpawn = timeBetweenSpawns;
+
+        spawnEnemy = true;
     }
 
     public void Update()

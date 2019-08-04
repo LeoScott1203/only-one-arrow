@@ -24,11 +24,21 @@ public class KillCounter : MonoBehaviour
     public void OnEnable()
     {
         Arrow.OnHit += OnEnemyKill;
+        Reset.OnReset += OnReset;
     }
 
     public void OnDisable()
     {
         Arrow.OnHit -= OnEnemyKill;
+        Reset.OnReset -= OnReset;
+    }
+
+    void OnReset()
+    {
+        killCount = 0;
+        currentKillThreshold = 0;
+
+        UpdateText();
     }
 
     void OnEnemyKill(Collider2D collider, ITarget target, Arrow arrow) // Dangit, why pass the collider? It should be on the target or arrow anyway! Oh well
@@ -41,6 +51,11 @@ public class KillCounter : MonoBehaviour
             currentKillThreshold++;
         }
 
+        UpdateText();
+    }
+
+    void UpdateText()
+    {
         textDisplay.DisplayText($"{killCount}/{(currentKillThreshold < killThresholds.Count ? killThresholds[currentKillThreshold] : killThresholds[killThresholds.Count - 1])}"); // To make it not update past the last kill counter
     }
 }

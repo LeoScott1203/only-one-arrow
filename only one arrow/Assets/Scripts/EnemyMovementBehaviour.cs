@@ -71,6 +71,7 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
     {
 
         EnemyMovementBehaviour.TriggerMenu += OnEnd;
+        Reset.OnReset += OnReset;
 
     }
 
@@ -79,6 +80,11 @@ public abstract class EnemyMovementBehaviour : MonoBehaviour
 
         completed = true;
 
+    }
+
+    void OnReset()
+    {
+        Destroy(this.gameObject);
     }
 
     public static void ImJustHookingThingsUpToThisBecauseItsFaster() // This is absolutely atrocious and I'll want to clean it up sliiightly later; need a working product first

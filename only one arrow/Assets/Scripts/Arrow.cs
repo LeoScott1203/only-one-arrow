@@ -94,6 +94,33 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         collider = GetComponent<Collider2D>();
     }
 
+    public void OnEnable()
+    {
+        EnemyMovementBehaviour.TriggerMenu += OnEnd;
+        Reset.OnReset += OnReset;
+    }
+
+    public void OnDisable()
+    {
+        EnemyMovementBehaviour.TriggerMenu -= OnEnd;
+        Reset.OnReset -= OnReset;
+    }
+
+    void OnReset()
+    {
+        OnPickedUpBy(Player.MainPlayer.GetComponent<PlayerShooting>(), this);
+        PickUpBy(Player.MainPlayer.GetComponent<PlayerShooting>());
+
+        completed = false;
+    }
+
+    void OnEnd(EnemyMovementBehaviour EMB)
+    {
+
+        completed = true;
+
+    }
+
     public void Update()
     {
         switch(_currentState)
@@ -204,6 +231,9 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
     {
         _currentState = State.Carried;
 
+        hasHit = false;
+        specialAbilityUsed = false;
+
         transform.SetParent(arrowHolder.ShootPoint);
         transform.SetPositionAndRotation(arrowHolder.ShootPoint.position, arrowHolder.ShootPoint.rotation);
 
@@ -229,19 +259,5 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
         Carried,
         InFlight,
         Resting
-    }
-
-    public void OnEnable()
-    {
-
-        EnemyMovementBehaviour.TriggerMenu += OnEnd;
-
-    }
-
-    void OnEnd(EnemyMovementBehaviour EMB)
-    {
-
-        completed = true;
-
     }
 }

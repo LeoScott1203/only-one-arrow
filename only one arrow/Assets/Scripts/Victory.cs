@@ -23,7 +23,7 @@ public class Victory : MonoBehaviour
     {
         if(index == indexOfKillThreshold)
         {
-            GetComponent<TextMeshProUGUI>().text = "You win! :D :D :D :D :D :D :D"; // Wow underwhelming; also since it's only done once no need to cache
+            GetComponent<TextMeshProUGUI>().text = "You win!\n:D :D :D :D :D :D :D"; // Wow underwhelming; also since it's only done once no need to cache
             EnemyMovementBehaviour.ImJustHookingThingsUpToThisBecauseItsFaster(); // please don't do this at home
         }
     }

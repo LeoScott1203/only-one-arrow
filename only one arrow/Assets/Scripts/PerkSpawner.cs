@@ -53,12 +53,38 @@ public class PerkSpawner : MonoBehaviour
     {
         KillCounter.OnKillThresholdReached += OnKillThresholdReached;
         PerkSpawnPod.OnPerkPicked += OnPerkPicked;
+        Reset.OnReset += OnReset;
     }
 
     public void OnDisable()
     {
         KillCounter.OnKillThresholdReached -= OnKillThresholdReached;
         PerkSpawnPod.OnPerkPicked -= OnPerkPicked;
+        Reset.OnReset -= OnReset;
+    }
+
+    void OnReset()
+    {
+        List<PerkData> keysToChange = new List<PerkData>(genericRewardsAllowedStatus.Keys);
+
+        foreach(PerkData data in keysToChange)
+        {
+            genericRewardsAllowedStatus[data] = true;
+        }
+
+        keysToChange = new List<PerkData>(dashRewardsAllowedStatus.Keys);
+
+        foreach(PerkData data in keysToChange)
+        {
+            dashRewardsAllowedStatus[data] = true;
+        }
+
+        keysToChange = new List<PerkData>(attackRewardsAllowedStatus.Keys);
+
+        foreach(PerkData data in keysToChange)
+        {
+            attackRewardsAllowedStatus[data] = true;
+        }
     }
 
     void OnKillThresholdReached(int thresholdIndex)

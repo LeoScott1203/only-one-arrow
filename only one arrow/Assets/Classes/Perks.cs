@@ -2,6 +2,11 @@
 
 public static class Perks
 {
+    static Perks()
+    {
+        Reset.OnReset += OnReset;
+    }
+
     static BitArray unlockedPerks = new BitArray((int)Perk.Count);
 
     public static void Unlock(Perk perk)
@@ -13,6 +18,14 @@ public static class Perks
     {
         return unlockedPerks[(int)perk];
     }
+
+    static void OnReset()
+    {
+        for(int i = 0; i < unlockedPerks.Count; i++)
+        {
+            unlockedPerks[i] = false;
+        }
+    }
 }
 
 public enum Perk
@@ -21,8 +34,8 @@ public enum Perk
     // Generic movement
     PlayerSpeed, // Implemented
     PlayerSpeedWhenWithoutArrow, // Implemented
-    DashDistance,
-    DashRechargeSpeed,
+    DashDistance, // Implemented
+    DashRechargeSpeed, // Implemented
     // Generic attack
     DrawUnitsGainPerSecond, // Implemented
     ArrowStartingSpeedPerDrawUnit, // Implemented

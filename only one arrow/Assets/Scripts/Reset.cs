@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Reset : MonoBehaviour
 {
+    public static Action OnReset = delegate { };
 
-    public void reset()
+    public void TriggerReset()
     {
+        OnReset();
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-
+        GetComponentInParent<Canvas>().enabled = false; // just cleaning up a bit
     }
 
 }

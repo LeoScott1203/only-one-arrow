@@ -26,11 +26,18 @@ public class PerkSpawnPod : MonoBehaviour
     public void OnEnable()
     {
         OnPerkPicked += OnOtherPerkPicked;
+        Reset.OnReset += OnReset;
     }
 
     public void OnDisable()
     {
-        OnPerkPicked += OnOtherPerkPicked;
+        OnPerkPicked -= OnOtherPerkPicked;
+        Reset.OnReset -= OnReset;
+    }
+
+    void OnReset()
+    {
+        Unload();
     }
 
     public void LoadData(PerkData data)
