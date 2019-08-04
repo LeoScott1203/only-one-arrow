@@ -15,4 +15,4 @@ MonoBehaviour:
   _perk: 11
   _category: 2
   _description: Dashing exactly into enemy destroys it
-  _icon: {fileID: 21300000, guid: 3094a424ef724194fa82771cef2b3586, type: 3}
+  _icon: {fileID: -2189561068042585152, guid: d6052cd3e17a5254a85ddf6d3bce9bfe, type: 3}

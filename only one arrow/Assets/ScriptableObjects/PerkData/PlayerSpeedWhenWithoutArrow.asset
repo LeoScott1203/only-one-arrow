@@ -15,4 +15,4 @@ MonoBehaviour:
   _perk: 1
   _category: 0
   _description: Player moves faster when not holding arrow
-  _icon: {fileID: 21300000, guid: 875d57ba1e4462f4d94641046d843715, type: 3}
+  _icon: {fileID: 631436086036874476, guid: d6052cd3e17a5254a85ddf6d3bce9bfe, type: 3}

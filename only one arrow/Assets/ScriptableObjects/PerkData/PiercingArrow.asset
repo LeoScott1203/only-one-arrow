@@ -15,4 +15,4 @@ MonoBehaviour:
   _perk: 14
   _category: 3
   _description: 'Special attack: arrow pierces'
-  _icon: {fileID: 21300000, guid: 202856e5d18e63347ab3bfff32eb7b6b, type: 3}
+  _icon: {fileID: -7122871549196100144, guid: d6052cd3e17a5254a85ddf6d3bce9bfe, type: 3}
