@@ -83,6 +83,8 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
     bool specialAbilityUsed = false;
 
+    bool isPhantomArrow = false;
+
     public float ChargeLevel
     {
         get
@@ -164,6 +166,12 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
 
                 if(speed == 0f)
                 {
+                    if(isPhantomArrow)
+                    {
+                        Destroy(this.gameObject);
+                        return;
+                    }
+
                     if(!hasHit)
                     {
                         OnArrowStoppedWithoutHitting(this);
@@ -246,6 +254,18 @@ public class Arrow : MonoBehaviour, IChargeLevelProvider
             transform.SetParent(null);
 
             collider.enabled = true;
+
+            if(usingSpecial && Perks.IsUnlocked(Perk.PhantomArrow))
+            {
+                Arrow leftArrow = GameObject.Instantiate(this, transform.position, transform.rotation);
+                Arrow rightArrow = GameObject.Instantiate(this, transform.position, transform.rotation);
+
+                leftArrow.transform.Rotate(0, 0, -20.0f);
+                rightArrow.transform.Rotate(0, 0, 20.0f);
+
+                leftArrow.isPhantomArrow = true;
+                rightArrow.isPhantomArrow = true;
+            }
         }
     }
 

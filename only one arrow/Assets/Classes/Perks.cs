@@ -47,7 +47,7 @@ public enum Perk
     MagnetDash, // Implemented (needs test)
     TelegibDash, // Implemented (needs test)
     // Special attack
-    PhantomArrow,
+    PhantomArrow, // Implemented (needs test)
     ExplosiveArrow, // Implemented (needs test)
     PiercingArrow, // Implemented (needs test)
     TeleportArrow, // Implemented
