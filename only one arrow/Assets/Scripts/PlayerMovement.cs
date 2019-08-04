@@ -161,6 +161,11 @@ public class PlayerMovement : MonoBehaviour, IChargeLevelProvider
             currentDashCooldown = startingDashCooldown;
         }
 
+        if(Perks.IsUnlocked(Perk.TelegibDash))
+        {
+            parent.ActivateTelegib();
+        }
+
         dashesInARow++;
     }
 }
