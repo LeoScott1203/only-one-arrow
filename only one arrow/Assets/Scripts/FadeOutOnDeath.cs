@@ -5,7 +5,12 @@ using UnityEngine;
 public class FadeOutOnDeath : MonoBehaviour
 {
 
-    GameObject gameObject;
+    GameObject SgameObject;
+
+    void Start()
+    {
+        SgameObject = this.gameObject;
+    }
 
    public void OnEnable()
     {
@@ -18,14 +23,14 @@ public class FadeOutOnDeath : MonoBehaviour
     void FadeOut(Arrow _)
     {
 
-        Destroy(gameObject);
+        Destroy(SgameObject);
 
     }
 
     void FadeOut(EnemyMovementBehaviour _)
     {
 
-        Destroy(gameObject);
+        Destroy(SgameObject);
 
     }
 
