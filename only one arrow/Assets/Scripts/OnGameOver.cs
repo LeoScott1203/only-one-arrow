@@ -10,7 +10,7 @@ public class OnGameOver : MonoBehaviour
 
     void Start()
     {
-        DontDestroyOnLoad(cv);
+        //DontDestroyOnLoad(cv);
         cv.enabled = false;
     }
 
