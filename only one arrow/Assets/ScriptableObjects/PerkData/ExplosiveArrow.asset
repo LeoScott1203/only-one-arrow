@@ -15,4 +15,4 @@ MonoBehaviour:
   _perk: 13
   _category: 3
   _description: 'Special attack: arrow explodes'
-  _icon: {fileID: 21300000, guid: 8cb65adb1dce0d64084a5c165535c942, type: 3}
+  _icon: {fileID: -5757855983293066394, guid: d6052cd3e17a5254a85ddf6d3bce9bfe, type: 3}

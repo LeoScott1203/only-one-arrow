@@ -15,4 +15,4 @@ MonoBehaviour:
   _perk: 15
   _category: 3
   _description: 'Special attack: Teleport to arrow after shooting'
-  _icon: {fileID: 21300000, guid: 89902390d6a83a049bd1cfd021ca6661, type: 3}
+  _icon: {fileID: 4768764585467602321, guid: d6052cd3e17a5254a85ddf6d3bce9bfe, type: 3}

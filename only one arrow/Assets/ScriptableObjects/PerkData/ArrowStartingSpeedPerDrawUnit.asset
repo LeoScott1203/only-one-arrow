@@ -15,4 +15,4 @@ MonoBehaviour:
   _perk: 5
   _category: 1
   _description: Initial arrow speed higher
-  _icon: {fileID: 21300000, guid: 2528b099d3a96e245ab7c1b436e15e01, type: 3}
+  _icon: {fileID: -8854006431929992511, guid: d6052cd3e17a5254a85ddf6d3bce9bfe, type: 3}
